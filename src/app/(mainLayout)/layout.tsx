@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Hanken_Grotesk, Poppins, Ubuntu } from "next/font/google";
 import Sidebar from "@/components/Sidebar/Sidebar";
+import Providers from "@/lib/Providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,7 +11,7 @@ const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
   style: ["normal", "italic"],
-  weight: ["400","500", "700", "800"],
+  weight: ["400", "500", "700", "800"],
 });
 const ubuntu = Ubuntu({
   variable: "--font-ubuntu",
@@ -30,11 +31,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={` ${poppins.className} ${inter.className} min-h-screen flex flex-col justify-center items-center`}>
-        {/* <Sidebar /> */}
-        {children}
-      </body>
-    </html>
+    <Providers>
+      <html lang="en">
+        <body
+          className={` ${poppins.className} ${inter.className} min-h-screen flex flex-col justify-center items-center`}
+        >
+          {/* <Sidebar /> */}
+          {children}
+        </body>
+      </html>
+    </Providers>
   );
 }
