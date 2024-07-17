@@ -4,9 +4,10 @@ import sidebarImg1 from "@/assets/img/ai-generated-8153530_1280.png";
 
 const Sidebar = () => {
   return (
-    <div className="md:w-[400px] min-h-[700px] rounded bg-blue-400 flex flex-col justify-start items-center py-14 text-xl font-semibold text-white relative overflow-hidden">
+    <div className="md:w-[400px] lg:min-h-[640px] rounded bg-blue-400 flex flex-col justify-start items-center py-14 text-xl font-semibold text-white relative overflow-hidden">
+
       {/* --- Sidebar Page indicator --- */}
-      <div className=" z-50">
+      <div className=" z-50 flex flex-col justify-center items-start ">
         {/* --- Indicator 01 --- */}
         <div className="flex justify-start items-center gap-3  px-5 py-5 rounded  transition-all duration-300 cursor-pointer ">
           <button className="border-4 w-12 h-12 rounded-full">1</button>
@@ -15,7 +16,7 @@ const Sidebar = () => {
             <button>Personal Information</button>
           </div>
         </div>
-        
+
         {/* --- Indicator 02 --- */}
         <div className="flex justify-start items-center gap-3  px-5 py-5 rounded  transition-all duration-300 cursor-pointer ">
           <button className="border-4 w-12 h-12 rounded-full">2</button>
@@ -24,7 +25,7 @@ const Sidebar = () => {
             <button>Travel Preference</button>
           </div>
         </div>
-        
+
         {/* --- Indicator 03 --- */}
         <div className="flex justify-start items-center gap-3  px-5 py-5 rounded  transition-all duration-300 cursor-pointer ">
           <button className="border-4 w-12 h-12 rounded-full">3</button>
@@ -33,8 +34,6 @@ const Sidebar = () => {
             <button>Health & Safety</button>
           </div>
         </div>
-
-
       </div>
 
       {/* --- Sidebar image div --- */}

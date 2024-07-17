@@ -2,7 +2,7 @@ import Sidebar from "@/components/Sidebar/Sidebar";
 
 export default function Home() {
   return (
-    <main className="flex min-h-[90vh] rounded container flex-col items-start justify-center p-10 shadow-2xl ">
+    <main className="flex  rounded container flex-col items-start justify-center p-10 shadow-2xl bg-white">
       <Sidebar />
     </main>
   );
