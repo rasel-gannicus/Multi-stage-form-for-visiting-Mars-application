@@ -36,8 +36,7 @@ export default function RootLayout({
         <body
           className={` ${poppins.className} ${inter.className} min-h-screen flex flex-col justify-center items-center`}
         >
-          {/* <Sidebar /> */}
-          {children}
+          <div className="container">{children}</div>
         </body>
       </html>
     </Providers>

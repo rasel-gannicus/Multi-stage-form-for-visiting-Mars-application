@@ -4,7 +4,7 @@ import sidebarImg1 from "@/assets/img/ai-generated-8153530_1280.png";
 
 const Sidebar = () => {
   return (
-    <div className="md:w-[400px] lg:min-h-[640px] rounded bg-blue-400 flex flex-col justify-start items-center py-14 text-xl font-semibold text-white relative overflow-hidden">
+    <div className="md:w-[400px] lg:min-h-[640px] h-[90%] rounded bg-blue-400 flex flex-col justify-start items-center py-14 text-xl font-semibold text-white relative overflow-hidden">
 
       {/* --- Sidebar Page indicator --- */}
       <div className=" z-50 flex flex-col justify-center items-start ">
