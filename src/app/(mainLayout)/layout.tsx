@@ -13,7 +13,7 @@ const poppins = Poppins({
   weight: ["400", "500", "700", "800"],
 });
 
-export const ubuntu = Ubuntu({
+const ubuntu = Ubuntu({
   variable: "--font-ubuntu",
   subsets: ["latin"],
   weight: ["400", "500", "700"],

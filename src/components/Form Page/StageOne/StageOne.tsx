@@ -6,6 +6,8 @@ import { HiOutlineMail } from "react-icons/hi";
 import PhoneInput from "react-phone-number-input";
 import React, { ChangeEvent } from "react";
 import { Ubuntu } from "next/font/google";
+import { useAppDispatch } from "@/Redux/store/reduxHooks";
+import { goToPage } from "@/Redux/features/pageRouting/pageRoutingSlice";
 
 // --- font for button
 const ubuntu = Ubuntu({
@@ -47,14 +49,17 @@ const StageOne = () => {
     fetchData();
   }, []);
 
+  //   --- changing form page with redux 
+  const dispatch = useAppDispatch() ;
+
   //   --- function for submitting form
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    console.log("form submitted");
+    dispatch(goToPage(2)) ;
   };
 
   return (
-    <div className="flex flex-col justify-between  h-[640px] items-end">
+    <div className="flex flex-col justify-between relative  h-[640px] items-end">
       <div className=" h-[550px] overflow-y-scroll py-2">
         <div className="mx-auto max-w-screen-2xl px-4  sm:px-6 lg:px-8 ">
           <div className="mx-auto max-w-lg text-center">
@@ -179,6 +184,12 @@ const StageOne = () => {
                 className="border-gray-200 mt-2 border-2 rounded py-3 px-4"
               />
             </div>
+            <button
+              type="submit"
+              className={`${ubuntu.className} inline-block rounded bg-slate-600 hover:bg-slate-500 px-8 py-3  font-medium text-white absolute bottom-0 right-0`}
+            >
+              Next
+            </button>
           </form>
         </div>
       </div>
@@ -186,15 +197,9 @@ const StageOne = () => {
       <div className="flex items-center justify-between  w-full px-8">
         <button
           type="submit"
-          className={`${ubuntu.className} inline-block rounded-lg bg-orange-500 hover:bg-orange-400 px-5 py-3  font-medium text-white`}
+          className={`${ubuntu.className} inline-block rounded bg-yellow-400 hover:bg-yellow-300  px-5 py-3  font-medium text-gray-600 duration-300 transition-all`}
         >
           Go Back
-        </button>
-        <button
-          type="submit"
-          className={`${ubuntu.className} inline-block rounded-lg bg-slate-600 hover:bg-slate-500 px-8 py-3  font-medium text-white`}
-        >
-          Next
         </button>
       </div>
     </div>
