@@ -2,6 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    background-color: #F0F5FF;
+body {
+  background-color: #f0f5ff;
+}
+
+.PhoneInput {
+}
+.PhoneInput--focus input {
+  border: none;
+  outline: none;
+}
+
+
+
+/* Style for the entire scrollbar */
+::-webkit-scrollbar {
+  width: 4px; /* Width of the vertical scrollbar */
+  height: 2px; /* Height of the horizontal scrollbar */
+  background: #888;
+}
+/* Style for the scrollbar track (background) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Style for the draggable part of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background: rgba(88, 101, 245, 0.37); /* Color of the thumb */
+  background: #ddd; /* Color of the thumb */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Hover effect for the scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the thumb on hover */
 }

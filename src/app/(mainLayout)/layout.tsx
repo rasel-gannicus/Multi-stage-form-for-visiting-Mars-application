@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Hanken_Grotesk, Poppins, Ubuntu } from "next/font/google";
-import Sidebar from "@/components/Sidebar/Sidebar";
+import { Poppins, Ubuntu } from "next/font/google";
 import Providers from "@/lib/Providers";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -13,7 +12,8 @@ const poppins = Poppins({
   style: ["normal", "italic"],
   weight: ["400", "500", "700", "800"],
 });
-const ubuntu = Ubuntu({
+
+export const ubuntu = Ubuntu({
   variable: "--font-ubuntu",
   subsets: ["latin"],
   weight: ["400", "500", "700"],
