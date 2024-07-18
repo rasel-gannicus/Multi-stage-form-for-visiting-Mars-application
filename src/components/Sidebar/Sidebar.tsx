@@ -5,6 +5,7 @@ import sidebarImg2 from "@/assets/img/mars 3.jpg";
 import { useAppSelector } from "@/Redux/store/reduxHooks";
 
 const Sidebar = () => {
+  // --- getting current page position in form with Redux
   const pageStatus = useAppSelector((state) => state.pageRouting.currentPage);
 
   return (
@@ -22,8 +23,8 @@ const Sidebar = () => {
           </button>
           <div>
             <p
-              className={`text-sm font-normal text-slate-400 ${
-                pageStatus === 1 && "text-green-400"
+              className={`text-sm font-normal  ${
+                pageStatus === 1 ? "text-green-400" : "text-slate-400"
               } `}
             >
               Stage 1
@@ -81,7 +82,7 @@ const Sidebar = () => {
           />
         )}
       </div>
-      <div className="absolute bg-black top-0 bottom-0 left-0 right-0 z-20 opacity-70"></div>
+      <div className="absolute bg-black top-0 bottom-0 left-0 right-0 z-20 opacity-40"></div>
     </div>
   );
 };

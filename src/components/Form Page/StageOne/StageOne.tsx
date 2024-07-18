@@ -6,7 +6,7 @@ import { HiOutlineMail } from "react-icons/hi";
 import PhoneInput from "react-phone-number-input";
 import React, { ChangeEvent } from "react";
 import { Ubuntu } from "next/font/google";
-import { useAppDispatch } from "@/Redux/store/reduxHooks";
+import { useAppDispatch, useAppSelector } from "@/Redux/store/reduxHooks";
 import { goToPage } from "@/Redux/features/pageRouting/pageRoutingSlice";
 
 // --- font for button
@@ -49,13 +49,16 @@ const StageOne = () => {
     fetchData();
   }, []);
 
-  //   --- changing form page with redux 
-  const dispatch = useAppDispatch() ;
+  // --- getting current page position in form with Redux
+  const pageStatus = useAppSelector((state) => state.pageRouting.currentPage);
+
+  //   --- changing form page with redux
+  const dispatch = useAppDispatch();
 
   //   --- function for submitting form
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    dispatch(goToPage(2)) ;
+    dispatch(goToPage(2));
   };
 
   return (
@@ -184,6 +187,8 @@ const StageOne = () => {
                 className="border-gray-200 mt-2 border-2 rounded py-3 px-4"
               />
             </div>
+
+            {/* ---------------- Next Page Button ---------------- */}
             <button
               type="submit"
               className={`${ubuntu.className} inline-block rounded bg-slate-600 hover:bg-slate-500 px-8 py-3  font-medium text-white absolute bottom-0 right-0`}
@@ -194,13 +199,16 @@ const StageOne = () => {
         </div>
       </div>
 
+      {/* ---------------- Previous Page Button ---------------- */}
       <div className="flex items-center justify-between  w-full px-8">
-        <button
-          type="submit"
-          className={`${ubuntu.className} inline-block rounded bg-yellow-400 hover:bg-yellow-300  px-5 py-3  font-medium text-gray-600 duration-300 transition-all`}
-        >
-          Go Back
-        </button>
+        {pageStatus != 1 && (
+          <button
+            type="submit"
+            className={`${ubuntu.className} inline-block rounded bg-yellow-400 hover:bg-yellow-300  px-5 py-3  font-medium text-gray-600 duration-300 transition-all`}
+          >
+            Go Back
+          </button>
+        )}
       </div>
     </div>
   );
