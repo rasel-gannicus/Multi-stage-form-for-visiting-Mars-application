@@ -9,11 +9,11 @@ const Sidebar = () => {
   const pageStatus = useAppSelector((state) => state.pageRouting.currentPage);
 
   return (
-    <div className="md:w-[400px] lg:min-h-[640px] h-[90%] rounded-lg bg-blue-400 flex flex-col justify-start items-center py-14 text-xl font-semibold text-white relative overflow-hidden">
+    <div className="lg:w-[400px] mx-auto lg:min-h-[640px] h-[90%] rounded-lg bg-blue-400 flex flex-col justify-start items-center py-8 lg:py-14 text-xl font-semibold text-white relative overflow-hidden">
       {/* --- Sidebar Page indicator --- */}
-      <div className=" z-50 flex flex-col justify-center items-start ">
+      <div className=" z-50 flex flex-wrap w-full gap-3 lg:gap-10 lg:flex-col justify-center items-start lg:ps-5 ">
         {/* --- Indicator 01 --- */}
-        <div className="flex justify-start items-center gap-3  px-5 py-5 rounded  transition-all duration-300 cursor-pointer ">
+        <div className="flex justify-start items-center gap-3  rounded  transition-all duration-300  ">
           <button
             className={`border-4 w-12 h-12 rounded-full ${
               pageStatus == 1 && "bg-white text-slate-700 border-none"
@@ -21,7 +21,7 @@ const Sidebar = () => {
           >
             1
           </button>
-          <div>
+          <div className="hidden lg:block">
             <p
               className={`text-sm font-normal  ${
                 pageStatus === 1 ? "text-green-400" : "text-slate-400"
@@ -34,7 +34,7 @@ const Sidebar = () => {
         </div>
 
         {/* --- Indicator 02 --- */}
-        <div className="flex justify-start items-center gap-3  px-5 py-5 rounded  transition-all duration-300 cursor-pointer ">
+        <div className="flex justify-start items-center gap-3 rounded  transition-all duration-300 cursor-pointer ">
           <button
             className={`border-4 w-12 h-12 rounded-full ${
               pageStatus == 2 && "bg-white text-slate-700 border-none"
@@ -42,10 +42,10 @@ const Sidebar = () => {
           >
             2
           </button>
-          <div>
+          <div  className="hidden lg:block">
             <p
-              className={`text-sm font-normal text-slate-400 ${
-                pageStatus === 2 && "text-green-400"
+              className={`text-sm font-normal  ${
+                pageStatus === 2 ? "text-green-400" : "text-slate-400"
               } `}
             >
               Stage 2
@@ -55,10 +55,12 @@ const Sidebar = () => {
         </div>
 
         {/* --- Indicator 03 --- */}
-        <div className="flex justify-start items-center gap-3  px-5 py-5 rounded  transition-all duration-300 cursor-pointer ">
+        <div className="flex justify-start items-center gap-3  rounded  transition-all duration-300 cursor-pointer ">
           <button className="border-4 w-12 h-12 rounded-full">3</button>
-          <div>
-            <p className="text-sm font-normal text-slate-400">Stage 3</p>
+          <div className="hidden lg:block">
+            <p className={`text-sm font-normal  ${
+                pageStatus === 3 ? "text-green-400" : "text-slate-400"
+              } `}>Stage 3</p>
             <button>Health & Safety</button>
           </div>
         </div>

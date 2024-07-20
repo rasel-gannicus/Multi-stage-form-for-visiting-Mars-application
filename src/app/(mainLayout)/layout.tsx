@@ -21,7 +21,7 @@ const ubuntu = Ubuntu({
 });
 
 export const metadata: Metadata = {
-  title: "Let's Go to Mars",
+  title: "Martian Paradise",
   description: "Application form for going into Mars",
 };
 

@@ -1,12 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { apiSlice } from '../features/api/apiSlice'
 import pageRoutingReducer from '../features/pageRouting/pageRoutingSlice' ;
+import formDataReducer from '../features/Form Information/formSlice'
 
 export const store = configureStore({
   reducer: {
     [apiSlice.reducerPath] : apiSlice.reducer,
-    pageRouting : pageRoutingReducer
-    
+    pageRouting : pageRoutingReducer,
+    formData : formDataReducer     
   },
   middleware : (getDefaultMiddleWares) => getDefaultMiddleWares().concat(apiSlice.middleware),
 })

@@ -8,6 +8,7 @@ import React, { ChangeEvent } from "react";
 import { Ubuntu } from "next/font/google";
 import { useAppDispatch, useAppSelector } from "@/Redux/store/reduxHooks";
 import { goToPage } from "@/Redux/features/pageRouting/pageRoutingSlice";
+import { fillUpFirstFormData } from "@/Redux/features/Form Information/formSlice";
 
 // --- font for button
 const ubuntu = Ubuntu({
@@ -18,12 +19,39 @@ const ubuntu = Ubuntu({
 });
 
 const StageOne = () => {
-  // --- for 'Select Phone Number' menubar
-  const [phoneNumber, setPhoneNumber] = useState("");
+  // --- getting current page position in form with Redux
+  const pageStatus = useAppSelector((state) => state.pageRouting.currentPage);
+  const formdata = useAppSelector(
+    (state) => state.formData.firstPageInformation
+  );
 
-  // --- selecting countries for 'Select Country' menubar
+  //   --- changing form page with redux
+  const dispatch = useAppDispatch();
+
+  //   --- function for submitting form
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    dispatch(goToPage(2));
+  };
+
+  // --- for 'Select Phone Number' menubar
+  const [phoneNumber, setPhoneNumber] = useState(formdata.phone);
+
+  useEffect(() => {
+    // ---  updating Redux state for phone number and
+    dispatch(
+      fillUpFirstFormData({
+        property: "phone",
+        value: phoneNumber,
+      })
+    );
+  }, [phoneNumber]);
+
+  // --- for 'Select Country' menubar
   const [countries, setCountries] = useState([]);
-  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [selectedCountry, setSelectedCountry] = useState(
+    formdata.country || null
+  );
 
   useEffect(() => {
     // --- fetching countrylist for the 'Select Country' menu with SSG(Static Site Generation) method
@@ -49,17 +77,15 @@ const StageOne = () => {
     fetchData();
   }, []);
 
-  // --- getting current page position in form with Redux
-  const pageStatus = useAppSelector((state) => state.pageRouting.currentPage);
-
-  //   --- changing form page with redux
-  const dispatch = useAppDispatch();
-
-  //   --- function for submitting form
-  const handleSubmit = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    dispatch(goToPage(2));
-  };
+  useEffect(() => {
+    // ---  updating Redux state for phone number and
+    dispatch(
+      fillUpFirstFormData({
+        property: "country",
+        value: selectedCountry,
+      })
+    );
+  }, [selectedCountry]);
 
   return (
     <div className="flex flex-col justify-between relative  h-[640px] items-end">
@@ -82,15 +108,24 @@ const StageOne = () => {
           >
             {/* ---- Name Section starts  --- */}
 
-            <div className=" flex justify-between items-center gap-3">
+            <div className=" flex flex-col lg:flex-row justify-between items-center gap-3">
               {/* --- first name --- */}
-              <div>
+              <div className=" w-full">
                 <label htmlFor="firstName" className="sr-only">
                   First Name
                 </label>
 
                 <div className="relative">
                   <input
+                    onChange={(e) =>
+                      dispatch(
+                        fillUpFirstFormData({
+                          property: "firstName",
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                    value={formdata.firstName}
                     required
                     type="name"
                     className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm border-2"
@@ -104,13 +139,22 @@ const StageOne = () => {
               </div>
 
               {/* --- last name --- */}
-              <div>
+              <div className="w-full">
                 <label htmlFor="lastName" className="sr-only">
                   Last Name
                 </label>
 
                 <div className="relative">
                   <input
+                    onChange={(e) =>
+                      dispatch(
+                        fillUpFirstFormData({
+                          property: "lastName",
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                    value={formdata.lastName}
                     required
                     type="name"
                     className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm border-2"
@@ -129,6 +173,15 @@ const StageOne = () => {
             <div>
               <div className="relative">
                 <input
+                  onChange={(e) =>
+                    dispatch(
+                      fillUpFirstFormData({
+                        property: "email",
+                        value: e.target.value,
+                      })
+                    )
+                  }
+                  value={formdata.email}
                   required
                   type="email"
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm border-2"
@@ -149,6 +202,15 @@ const StageOne = () => {
 
               <div className="relative">
                 <input
+                  onChange={(e) =>
+                    dispatch(
+                      fillUpFirstFormData({
+                        property: "dateOfBirth",
+                        value: e.target.value,
+                      })
+                    )
+                  }
+                  value={formdata.dateOfBirth}
                   required
                   type="date"
                   className="w-full rounded-lg border-2 border-gray-200 text-gray-400 p-4 pe-12 mt-2 text-sm "
