@@ -78,9 +78,8 @@ const Sidebar = () => {
         {pageStatus == 2 && (
           <Image
             src={sidebarImg2}
-            alt="sidebar image 01"
+            alt="sidebar image 02"
             className=""
-            fill
           />
         )}
       </div>

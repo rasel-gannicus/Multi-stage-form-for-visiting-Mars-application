@@ -21,6 +21,7 @@ const ubuntu = Ubuntu({
 const StageOne = () => {
   // --- getting current page position in form with Redux
   const pageStatus = useAppSelector((state) => state.pageRouting.currentPage);
+  // --- getting formdata from Redux store 
   const formdata = useAppSelector(
     (state) => state.formData.firstPageInformation
   );
@@ -126,7 +127,7 @@ const StageOne = () => {
                       )
                     }
                     value={formdata.firstName}
-                    required
+                    // required
                     type="name"
                     className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm border-2"
                     placeholder="First Name"
@@ -155,7 +156,7 @@ const StageOne = () => {
                       )
                     }
                     value={formdata.lastName}
-                    required
+                    // required
                     type="name"
                     className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm border-2"
                     placeholder="Last Name"
@@ -182,7 +183,7 @@ const StageOne = () => {
                     )
                   }
                   value={formdata.email}
-                  required
+                  // required
                   type="email"
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm border-2"
                   placeholder="Your email"
@@ -211,7 +212,7 @@ const StageOne = () => {
                     )
                   }
                   value={formdata.dateOfBirth}
-                  required
+                  // required
                   type="date"
                   className="w-full rounded-lg border-2 border-gray-200 text-gray-400 p-4 pe-12 mt-2 text-sm "
                   placeholder="Date of birth"
@@ -225,7 +226,7 @@ const StageOne = () => {
                 Your Country
               </label>
               <Select
-                required
+                // required
                 options={countries}
                 value={selectedCountry}
                 onChange={(selectedOption) =>
@@ -242,7 +243,7 @@ const StageOne = () => {
               </label>
 
               <PhoneInput
-                required
+                // required
                 placeholder="Enter phone number"
                 value={phoneNumber}
                 onChange={(phoneNumber: any) => setPhoneNumber(phoneNumber)}
