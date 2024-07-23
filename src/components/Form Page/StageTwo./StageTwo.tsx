@@ -19,9 +19,10 @@ const StageTwo = () => {
   // --- getting current page position in form with Redux
   const pageStatus = useAppSelector((state) => state.pageRouting.currentPage);
   // --- getting formdata from Redux store
-  const formdata = useAppSelector(
-    (state) => state.formData.firstPageInformation
+  const formdata2 = useAppSelector(
+    (state) => state.formData2.secondPageInformation
   );
+  console.log(formdata2);
   //   --- changing form page with redux
   const dispatch = useAppDispatch();
 
@@ -64,7 +65,7 @@ const StageTwo = () => {
                   //     })
                   //   )
                   // }
-                  value={formdata.dateOfBirth}
+                  // value={formdata.dateOfBirth}
                   // required
                   type="date"
                   className="w-full rounded-lg border-2 border-gray-200 text-gray-400 p-4 pe-12 mt-2 text-sm  "
@@ -89,7 +90,7 @@ const StageTwo = () => {
                   //     })
                   //   )
                   // }
-                  value={formdata.dateOfBirth}
+                  // value={formdata.dateOfBirth}
                   // required
                   type="date"
                   className="w-full rounded-lg border-2 border-gray-200 text-gray-400 p-4 pe-12 mt-2 text-sm "
