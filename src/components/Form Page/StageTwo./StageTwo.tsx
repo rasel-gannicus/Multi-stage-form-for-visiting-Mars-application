@@ -4,8 +4,8 @@ import { Ubuntu } from "next/font/google";
 import Image from "next/image";
 import React, { useState } from "react";
 import { MdDriveFileRenameOutline } from "react-icons/md";
-import dummyImg1 from '@/assets/img/sdfs.jpg' ; 
-import dummyImg2 from '@/assets/img/sefsg.jpg' ; 
+import dummyImg1 from "@/assets/img/sdfs.jpg";
+import dummyImg2 from "@/assets/img/sefsg.jpg";
 
 // --- font for button
 const ubuntu = Ubuntu({
@@ -26,19 +26,15 @@ const StageTwo = () => {
   const dispatch = useAppDispatch();
 
   const [hotel, setHotel] = useState("no hotel");
-  console.log(hotel);
+  // console.log(hotel);
   return (
-    <div className="flex flex-col justify-between relative  h-[640px] items-end">
-      <div className=" h-[550px] overflow-y-scroll py-2 w-full">
-        <div className="mx-auto max-w-screen-2xl px-4  sm:px-6 lg:px-8 w-full">
+    <div className="flex flex-col justify-between relative  h-[640px] items-end  lg:min-w-[600px]">
+      <div className=" h-[550px] overflow-y-scroll py-2 w-full ">
+        <div className="mx-auto max-w-screen-2xl px-4  sm:px-6 lg:px-8 w-full ">
           <div className="mx-auto max-w-lg text-center">
             <h1 className="text-2xl font-bold sm:text-3xl">
               Travel Preferences
             </h1>
-
-            {/* <p className="mt-4 text-gray-500">
-              Going to Mars ain&apos;t that hard
-            </p> */}
           </div>
 
           {/* ------------------------- Form  -------------------------- */}
@@ -65,7 +61,7 @@ const StageTwo = () => {
                   value={formdata.dateOfBirth}
                   // required
                   type="date"
-                  className="w-full rounded-lg border-2 border-gray-200 text-gray-400 p-4 pe-12 mt-2 text-sm "
+                  className="w-full rounded-lg border-2 border-gray-200 text-gray-400 p-4 pe-12 mt-2 text-sm  "
                   placeholder="Date of birth"
                 />
               </div>
@@ -98,33 +94,47 @@ const StageTwo = () => {
 
             {/* --- Accomodation Preferenes --- */}
 
-            <div className=" py-5">
-              <h2>Accomodation Preferences : </h2>
-              <label className="flex my-5 gap-3 justify-start items-center pt-4 text-gray-500">
-                <input
-                  type="radio"
-                  name="space hotel"
-                  id=""
-                  value="space-hotel"
-                  className="w-5 h-5"
-                  onChange={(e) => setHotel(e.target.value)}
+            <h2  className=" pt-5">Accomodation Preferences : </h2>
+            <div className="flex justify-between items-center">
+              <div>
+                <label className="flex my-5 gap-3 justify-start items-center text-gray-500">
+                  <input
+                    type="radio"
+                    name="space hotel"
+                    id=""
+                    value="space-hotel"
+                    className="w-5 h-5 cursor-pointer"
+                    onChange={(e) => setHotel(e.target.value)}
+                  />
+                  <span className="cursor-pointer">Space Hotel</span>
+                </label>
+                <Image
+                  src={dummyImg2}
+                  className=""
+                  alt="Accomodation image"
+                  style={{ width: "200px" }}
                 />
-                <span className="cursor-pointer">Space Hotel</span>
-              </label>
-              <Image src={dummyImg2} className=""  alt="Accomodation image" style={{width : '200px'}} />
+              </div>
 
-              <label className="flex gap-3 my-5 justify-start items-center pt-4 text-gray-500">
-                <input
-                  type="radio"
-                  name="space hotel"
-                  id=""
-                  value="martian-base"
-                  className="w-5 h-5"
-                  onChange={(e) => setHotel(e.target.value)}
+              <div>
+                <label className="flex gap-3 my-5 justify-start items-center  text-gray-500">
+                  <input
+                    type="radio"
+                    name="space hotel"
+                    id=""
+                    value="martian-base"
+                    className="w-5 h-5 cursor-pointer"
+                    onChange={(e) => setHotel(e.target.value)}
+                  />
+                  <span className="cursor-pointer">Martian Base</span>
+                </label>
+                <Image
+                  src={dummyImg1}
+                  className="cursor-pointer"
+                  alt="Accomodation image"
+                  style={{ width: "200px" }}
                 />
-                <span className="cursor-pointer">Martian Base</span>
-              </label>
-              <Image src={dummyImg1} className="cursor-pointer" alt="Accomodation image" style={{width : '200px'}} />
+              </div>
             </div>
 
             {/* ---------------- Next Page Button ---------------- */}
