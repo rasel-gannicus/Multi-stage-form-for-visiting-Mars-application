@@ -94,46 +94,50 @@ const StageTwo = () => {
 
             {/* --- Accomodation Preferenes --- */}
 
-            <h2  className=" pt-5">Accomodation Preferences : </h2>
+            <h2 className=" pt-5">Accomodation Preferences : </h2>
             <div className="flex justify-between items-center">
               <div>
-                <label className="flex my-5 gap-3 justify-start items-center text-gray-500">
-                  <input
-                    type="radio"
-                    name="space hotel"
-                    id=""
-                    value="space-hotel"
-                    className="w-5 h-5 cursor-pointer"
-                    onChange={(e) => setHotel(e.target.value)}
+                <label className="flex flex-col py-1 gap-3 hover:text-black justify-start items-center text-gray-500">
+                  <span className="flex w-full justify-start items-center gap-4">
+                    <input
+                      type="radio"
+                      name="space hotel"
+                      id=""
+                      value="space-hotel"
+                      className="w-5 h-5 cursor-pointer"
+                      onChange={(e) => setHotel(e.target.value)}
+                    />
+                    <span className="cursor-pointer">Space Hotel</span>
+                  </span>
+                  <Image
+                    src={dummyImg2}
+                    className="cursor-pointer"
+                    alt="Accomodation image"
+                    style={{ width: "200px" }}
                   />
-                  <span className="cursor-pointer">Space Hotel</span>
                 </label>
-                <Image
-                  src={dummyImg2}
-                  className=""
-                  alt="Accomodation image"
-                  style={{ width: "200px" }}
-                />
               </div>
 
               <div>
-                <label className="flex gap-3 my-5 justify-start items-center  text-gray-500">
-                  <input
-                    type="radio"
-                    name="space hotel"
-                    id=""
-                    value="martian-base"
-                    className="w-5 h-5 cursor-pointer"
-                    onChange={(e) => setHotel(e.target.value)}
+                <label className="flex flex-col py-1 gap-3 hover:text-black justify-start items-center  text-gray-500">
+                  <span className="flex w-full justify-start items-center gap-3">
+                    <input
+                      type="radio"
+                      name="space hotel"
+                      id=""
+                      value="martian-base"
+                      className="w-5 h-5 cursor-pointer"
+                      onChange={(e) => setHotel(e.target.value)}
+                    />
+                    <span className="cursor-pointer">Martian Base</span>
+                  </span>
+                  <Image
+                    src={dummyImg1}
+                    className="cursor-pointer"
+                    alt="Accomodation image"
+                    style={{ width: "200px" }}
                   />
-                  <span className="cursor-pointer">Martian Base</span>
                 </label>
-                <Image
-                  src={dummyImg1}
-                  className="cursor-pointer"
-                  alt="Accomodation image"
-                  style={{ width: "200px" }}
-                />
               </div>
             </div>
 
