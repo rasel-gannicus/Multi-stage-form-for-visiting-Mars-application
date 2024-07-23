@@ -26,9 +26,15 @@ const StageTwo = () => {
   const dispatch = useAppDispatch();
 
   const [hotel, setHotel] = useState("no hotel");
-  // console.log(hotel);
+  const [specialPref, setSpecialPref] = useState(false);
+
+  //   --- function for submitting form
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    dispatch(goToPage(3));
+  };
   return (
-    <div className="flex flex-col justify-between relative  h-[640px] items-end  lg:min-w-[600px]">
+    <div className="flex flex-col justify-between relative  h-[640px] items-end  lg:min-w-[500px] xl:min-w-[600px] ">
       <div className=" h-[550px] overflow-y-scroll py-2 w-full ">
         <div className="mx-auto max-w-screen-2xl px-4  sm:px-6 lg:px-8 w-full ">
           <div className="mx-auto max-w-lg text-center">
@@ -39,12 +45,12 @@ const StageTwo = () => {
 
           {/* ------------------------- Form  -------------------------- */}
           <form
-            // onSubmit={handleSubmit}
+            onSubmit={handleSubmit}
             className="mx-auto mb-0 mt-8 max-w-lg space-y-4 "
           >
             {/* --- Departure Date --- */}
             <div>
-              <label htmlFor="date of birth" className="text-gray-500 ">
+              <label htmlFor="date of birth" className=" ">
                 Departure date :
               </label>
 
@@ -69,7 +75,7 @@ const StageTwo = () => {
 
             {/* --- Return Date --- */}
             <div>
-              <label htmlFor="date of birth" className="text-gray-500 ">
+              <label htmlFor="date of birth" className=" ">
                 Return date :
               </label>
 
@@ -94,14 +100,16 @@ const StageTwo = () => {
 
             {/* --- Accomodation Preferenes --- */}
 
-            <h2 className=" pt-5">Accomodation Preferences : </h2>
-            <div className="flex justify-between items-center">
+            <h2 className=" text-left text-sm md:text-lg pt-5">
+              Accomodation Preferences :{" "}
+            </h2>
+            <div className="flex flex-col lg:flex-row gap-3 justify-between items-start">
               <div>
                 <label className="flex flex-col py-1 gap-3 hover:text-black justify-start items-center text-gray-500">
                   <span className="flex w-full justify-start items-center gap-4">
                     <input
                       type="radio"
-                      name="space hotel"
+                      name="hotel"
                       id=""
                       value="space-hotel"
                       className="w-5 h-5 cursor-pointer"
@@ -123,7 +131,7 @@ const StageTwo = () => {
                   <span className="flex w-full justify-start items-center gap-3">
                     <input
                       type="radio"
-                      name="space hotel"
+                      name="hotel"
                       id=""
                       value="martian-base"
                       className="w-5 h-5 cursor-pointer"
@@ -141,10 +149,57 @@ const StageTwo = () => {
               </div>
             </div>
 
+            {/* --- Special Preferenes --- */}
+            <div className="flex justify-center gap-2 items-start flex-col">
+              <h2 className=" pt-5">Do you have any special preferences : </h2>
+              <div className="flex flex-col lg:flex-row justify-between items-start gap-5 w-3/6">
+                <label className="flex flex-col py-1 gap-3 hover:text-black justify-start items-center text-gray-500">
+                  <span className="flex w-full justify-start items-center gap-4">
+                    <input
+                      type="radio"
+                      name="special-preferences"
+                      id=""
+                      value="yes"
+                      checked={specialPref}
+                      className="w-5 h-5 cursor-pointer"
+                      onChange={() => setSpecialPref(true)}
+                    />
+                    <span className="cursor-pointer">Yes</span>
+                  </span>
+                </label>
+                <label className="flex flex-col py-1 gap-3 hover:text-black justify-start items-center  text-gray-500">
+                  <span className="flex w-full justify-start items-center gap-3">
+                    <input
+                      type="radio"
+                      name="special-preferences"
+                      id=""
+                      value="no"
+                      checked={!specialPref}
+                      className="w-5 h-5 cursor-pointer"
+                      onChange={() => setSpecialPref(false)}
+                    />
+                    <span className="cursor-pointer">No</span>
+                  </span>
+                </label>
+              </div>
+              {specialPref && (
+                <div className="my-5">
+                  <p>Describe your special preferences : </p>
+                  <textarea
+                    name="specialPref"
+                    id=""
+                    rows={5}
+                    required
+                    className="border-2 my-5 w-full "
+                  ></textarea>
+                </div>
+              )}
+            </div>
+
             {/* ---------------- Next Page Button ---------------- */}
             <button
               type="submit"
-              className={`${ubuntu.className} inline-block rounded bg-slate-600 hover:bg-slate-500 px-8 py-3  font-medium text-white absolute bottom-0 right-0`}
+              className={`${ubuntu.className} inline-block rounded bg-slate-600 hover:bg-slate-500 px-3 md:px-8 py-3  font-medium text-white absolute bottom-0 right-0`}
             >
               Next
             </button>
@@ -153,12 +208,12 @@ const StageTwo = () => {
       </div>
 
       {/* ---------------- Previous Page Button ---------------- */}
-      <div className="flex items-center justify-between  w-full px-8">
+      <div className="flext  items-center justify-between  w-full px-8">
         {pageStatus != 1 && (
           <button
             onClick={() => dispatch(goToPage(1))}
             type="submit"
-            className={`${ubuntu.className} inline-block rounded bg-yellow-400 hover:bg-yellow-300  px-5 py-3  font-medium text-gray-600 duration-300 transition-all`}
+            className={`${ubuntu.className} inline-block rounded bg-yellow-400 hover:bg-yellow-300 px-3 md:px-5 py-3  font-medium text-gray-600 duration-300 transition-all`}
           >
             Go Back
           </button>
