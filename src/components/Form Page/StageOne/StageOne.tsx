@@ -11,7 +11,7 @@ import { goToPage } from "@/Redux/features/pageRouting/pageRoutingSlice";
 import { fillUpFirstFormData } from "@/Redux/features/Form Information/formSlice";
 
 // --- font for button
-const ubuntu = Ubuntu({
+export const ubuntu = Ubuntu({
   variable: "--font-ubuntu",
   subsets: ["latin"],
   weight: ["400", "500", "700"],

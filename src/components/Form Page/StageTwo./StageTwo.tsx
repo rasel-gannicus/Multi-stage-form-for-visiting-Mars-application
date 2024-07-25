@@ -1,21 +1,16 @@
 import { goToPage } from "@/Redux/features/pageRouting/pageRoutingSlice";
 import { useAppDispatch, useAppSelector } from "@/Redux/store/reduxHooks";
-import { Ubuntu } from "next/font/google";
 import Image from "next/image";
 import React, { useState } from "react";
 import { MdDriveFileRenameOutline } from "react-icons/md";
-import dummyImg1 from "@/assets/img/sdfs.jpg";
-import dummyImg2 from "@/assets/img/sefsg.jpg";
+import dummyImg1 from "@/assets/img/martian hotel 2.jpeg";
+import dummyImg2 from "@/assets/img/martian hotel 3.png";
+import { ubuntu } from "../StageOne/StageOne";
 
-// --- font for button
-const ubuntu = Ubuntu({
-  variable: "--font-ubuntu",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  display: "swap",
-});
+
 
 const StageTwo = () => {
+  
   // --- getting current page position in form with Redux
   const pageStatus = useAppSelector((state) => state.pageRouting.currentPage);
   // --- getting formdata from Redux store
@@ -68,6 +63,7 @@ const StageTwo = () => {
                   // value={formdata.dateOfBirth}
                   // required
                   type="date"
+                  
                   className="w-full rounded-lg border-2 border-gray-200 text-gray-400 p-4 pe-12 mt-2 text-sm  "
                   placeholder="Date of birth"
                 />
@@ -120,7 +116,7 @@ const StageTwo = () => {
                   </span>
                   <Image
                     src={dummyImg2}
-                    className="cursor-pointer"
+                    className="cursor-pointer rounded "
                     alt="Accomodation image"
                     style={{ width: "200px" }}
                   />
@@ -142,7 +138,7 @@ const StageTwo = () => {
                   </span>
                   <Image
                     src={dummyImg1}
-                    className="cursor-pointer"
+                    className="cursor-pointer rounded  "
                     alt="Accomodation image"
                     style={{ width: "200px" }}
                   />
