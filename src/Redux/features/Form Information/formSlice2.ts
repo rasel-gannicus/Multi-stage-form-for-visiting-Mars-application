@@ -2,8 +2,14 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface TInitialStateForm2 {
   secondPageInformation: {
-    departureDate: null;
-    returnDate: null;
+    departureDate: {
+      startDate: Date | null ;
+      endDate: Date | null | string;
+    };
+    returnDate: {
+      startDate: Date | null;
+      endDate: Date | null;
+    };
     accomodation: string;
     specialPreferences: {
       statues: boolean;
@@ -11,13 +17,21 @@ export interface TInitialStateForm2 {
     };
   };
 }
+
 // Define the type of the property names in the secondPageInformation object
-type SecondPageInformationKeys = keyof TInitialStateForm2["secondPageInformation"];
+type SecondPageInformationKeys =
+  keyof TInitialStateForm2["secondPageInformation"];
 
 const initialState: TInitialStateForm2 = {
   secondPageInformation: {
-    departureDate: null,
-    returnDate: null,
+    departureDate: {
+      startDate: null,
+      endDate: null,
+    },
+    returnDate: {
+      startDate: null,
+      endDate: null,
+    },
     accomodation: "",
     specialPreferences: {
       statues: false,
@@ -35,6 +49,7 @@ const formSlice2 = createSlice({
       action: PayloadAction<{ property: SecondPageInformationKeys; value: any }>
     ) => {
       const { property, value } = action.payload;
+      console.log(action.payload);
 
       state.secondPageInformation[property] = value;
     },

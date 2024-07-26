@@ -6,31 +6,30 @@ import dummyImg1 from "@/assets/img/martian hotel 2.jpeg";
 import dummyImg2 from "@/assets/img/martian hotel 3.png";
 import { ubuntu } from "../StageOne/StageOne";
 import Datepicker from "react-tailwindcss-datepicker";
+import { fillUpSecondFormData } from "@/Redux/features/Form Information/formSlice2";
 
 const StageTwo = () => {
-    // --- getting current page status with Redux
-    const pageStatus = useAppSelector((state) => state.pageRouting.currentPage);
-
-    // --- getting formdata for second page from Redux store
-    const formdata2 = useAppSelector(
-      (state) => state.formData2.secondPageInformation
-    );
-    console.log(formdata2);
-
-  // --- handling departure & return date 
-  const [departureDate, setDepartureDate] = useState(formdata2.departureDate);
-  const [returnDate, setReturnDate] = useState(formdata2.returnDate) ;
-
-  const handleDepartureDate = (newValue: any) => {
-    setDepartureDate(newValue);
-  };
-  const handleReturnDate =(newValue: any) => {
-    setReturnDate(newValue);
-  };
-
-
   //   --- changing form page with redux
   const dispatch = useAppDispatch();
+
+  // --- getting current page status with Redux
+  const pageStatus = useAppSelector((state) => state.pageRouting.currentPage);
+
+  // --- getting formdata for second page from Redux store
+  const formdata2 = useAppSelector(
+    (state) => state.formData2.secondPageInformation
+  );
+  console.log(formdata2);
+
+  // --- handling departure & return date
+  const [returnDate, setReturnDate] = useState(formdata2.returnDate);
+
+  const handleDepartureDate = (newValue: any) => {
+    dispatch(fillUpSecondFormData({property : 'departureDate', value : newValue}));
+  };
+  const handleReturnDate = (newValue: any) => {
+    dispatch(fillUpSecondFormData({property : 'returnDate', value : newValue}));
+  };
 
   const [hotel, setHotel] = useState("no hotel");
   const [specialPref, setSpecialPref] = useState(false);
@@ -66,7 +65,7 @@ const StageTwo = () => {
                   inputClassName="w-full rounded-md focus:ring-0 font-normal border-2 py-3 px-3 "
                   useRange={false}
                   asSingle={true}
-                  value={departureDate}
+                  value={formdata2.departureDate}
                   onChange={handleDepartureDate}
                 />
               </div>
@@ -83,7 +82,7 @@ const StageTwo = () => {
                   inputClassName="w-full rounded-md focus:ring-0 font-normal border-2 py-3 px-3 "
                   useRange={false}
                   asSingle={true}
-                  value={returnDate}
+                  value={formdata2.returnDate}
                   onChange={handleReturnDate}
                 />
               </div>
