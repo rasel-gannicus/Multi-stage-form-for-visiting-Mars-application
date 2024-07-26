@@ -1,9 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-interface TInitialState {
+export interface TInitialStateForm2 {
   secondPageInformation: {
-    departureDate: string;
-    returnDate: string;
+    departureDate: null;
+    returnDate: null;
     accomodation: string;
     specialPreferences: {
       statues: boolean;
@@ -12,12 +12,12 @@ interface TInitialState {
   };
 }
 // Define the type of the property names in the secondPageInformation object
-type SecondPageInformationKeys = keyof TInitialState["secondPageInformation"];
+type SecondPageInformationKeys = keyof TInitialStateForm2["secondPageInformation"];
 
-const initialState: TInitialState = {
+const initialState: TInitialStateForm2 = {
   secondPageInformation: {
-    departureDate: "",
-    returnDate: "",
+    departureDate: null,
+    returnDate: null,
     accomodation: "",
     specialPreferences: {
       statues: false,

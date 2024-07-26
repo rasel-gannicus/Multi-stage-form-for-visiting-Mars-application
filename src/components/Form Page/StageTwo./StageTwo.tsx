@@ -2,22 +2,33 @@ import { goToPage } from "@/Redux/features/pageRouting/pageRoutingSlice";
 import { useAppDispatch, useAppSelector } from "@/Redux/store/reduxHooks";
 import Image from "next/image";
 import React, { useState } from "react";
-import { MdDriveFileRenameOutline } from "react-icons/md";
 import dummyImg1 from "@/assets/img/martian hotel 2.jpeg";
 import dummyImg2 from "@/assets/img/martian hotel 3.png";
 import { ubuntu } from "../StageOne/StageOne";
-
-
+import Datepicker from "react-tailwindcss-datepicker";
 
 const StageTwo = () => {
-  
-  // --- getting current page position in form with Redux
-  const pageStatus = useAppSelector((state) => state.pageRouting.currentPage);
-  // --- getting formdata from Redux store
-  const formdata2 = useAppSelector(
-    (state) => state.formData2.secondPageInformation
-  );
-  console.log(formdata2);
+    // --- getting current page status with Redux
+    const pageStatus = useAppSelector((state) => state.pageRouting.currentPage);
+
+    // --- getting formdata for second page from Redux store
+    const formdata2 = useAppSelector(
+      (state) => state.formData2.secondPageInformation
+    );
+    console.log(formdata2);
+
+  // --- handling departure & return date 
+  const [departureDate, setDepartureDate] = useState(formdata2.departureDate);
+  const [returnDate, setReturnDate] = useState(formdata2.returnDate) ;
+
+  const handleDepartureDate = (newValue: any) => {
+    setDepartureDate(newValue);
+  };
+  const handleReturnDate =(newValue: any) => {
+    setReturnDate(newValue);
+  };
+
+
   //   --- changing form page with redux
   const dispatch = useAppDispatch();
 
@@ -50,22 +61,13 @@ const StageTwo = () => {
                 Departure date :
               </label>
 
-              <div className="relative">
-                <input
-                  // onChange={(e) =>
-                  //   dispatch(
-                  //     fillUpFirstFormData({
-                  //       property: "dateOfBirth",
-                  //       value: e.target.value,
-                  //     })
-                  //   )
-                  // }
-                  // value={formdata.dateOfBirth}
-                  // required
-                  type="date"
-                  
-                  className="w-full rounded-lg border-2 border-gray-200 text-gray-400 p-4 pe-12 mt-2 text-sm  "
-                  placeholder="Date of birth"
+              <div className="relative mt-3">
+                <Datepicker
+                  inputClassName="w-full rounded-md focus:ring-0 font-normal border-2 py-3 px-3 "
+                  useRange={false}
+                  asSingle={true}
+                  value={departureDate}
+                  onChange={handleDepartureDate}
                 />
               </div>
             </div>
@@ -76,21 +78,13 @@ const StageTwo = () => {
                 Return date :
               </label>
 
-              <div className="relative">
-                <input
-                  // onChange={(e) =>
-                  //   dispatch(
-                  //     fillUpFirstFormData({
-                  //       property: "dateOfBirth",
-                  //       value: e.target.value,
-                  //     })
-                  //   )
-                  // }
-                  // value={formdata.dateOfBirth}
-                  // required
-                  type="date"
-                  className="w-full rounded-lg border-2 border-gray-200 text-gray-400 p-4 pe-12 mt-2 text-sm "
-                  placeholder="Date of birth"
+              <div className="relative mt-3">
+                <Datepicker
+                  inputClassName="w-full rounded-md focus:ring-0 font-normal border-2 py-3 px-3 "
+                  useRange={false}
+                  asSingle={true}
+                  value={returnDate}
+                  onChange={handleReturnDate}
                 />
               </div>
             </div>
