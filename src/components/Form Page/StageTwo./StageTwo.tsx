@@ -39,10 +39,10 @@ const StageTwo = () => {
     dispatch(goToPage(3));
   };
   return (
-    <div className="flex flex-col justify-between overflow-y-scroll  h-[80%] items-end  lg:min-w-[500px] xl:min-w-[600px] ">
+    <div className="flex flex-col justify-between overflow-y-scroll  h-[80%] items-end  w-full ">
       <div className=" py-2 w-full ">
-        <div className="mx-auto max-w-screen-2xl px-4  sm:px-6 lg:px-8 w-full ">
-          <div className="mx-auto max-w-lg text-center">
+        <div className="mx-auto px-4  sm:px-6 lg:px-8 w-full ">
+          <div className="mx-auto w-full text-center">
             <h1 className="text-2xl font-bold sm:text-3xl">
               Travel Preferences
             </h1>
@@ -51,7 +51,7 @@ const StageTwo = () => {
           {/* ------------------------- Form  -------------------------- */}
           <form
             onSubmit={handleSubmit}
-            className="mx-auto mb-0 mt-8 max-w-lg space-y-4 text-lg"
+            className="mx-auto mb-0 mt-8 w-full space-y-4 text-lg"
           >
             {/* --- Departure Date --- */}
             <div>
@@ -212,11 +212,11 @@ const StageTwo = () => {
 
             {/* ---------------- Next Page Button ---------------- */}
             <button
-              type="submit"
-              className={`${ubuntu.className} inline-block rounded bg-slate-600 hover:bg-slate-500 px-3 md:px-8 py-3  font-medium text-white absolute bottom-0 right-0 xl:right-[5%] `}
-            >
-              Next
-            </button>
+                type="submit"
+                className={`${ubuntu.className} inline-block rounded bg-slate-600 hover:bg-slate-500 w-24 h-12  font-medium text-white absolute bottom-0 right-0 xl:right-[5%]`}
+              >
+                Next
+              </button>
           </form>
         </div>
       </div>

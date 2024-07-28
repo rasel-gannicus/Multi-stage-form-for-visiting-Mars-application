@@ -57,7 +57,13 @@ const Sidebar = () => {
 
         {/* --- Indicator 03 --- */}
         <div className="flex justify-start items-center gap-3  rounded  transition-all duration-300 cursor-pointer ">
-          <button className="border-4 w-12 h-12 rounded-full">3</button>
+        <button
+            className={`border-4 w-12 h-12 rounded-full ${
+              pageStatus == 3 && "bg-white text-slate-700 border-none"
+            } `}
+          >
+            3
+          </button>
           <div className="hidden lg:block">
             <p className={`text-sm font-normal  ${
                 pageStatus === 3 ? "text-green-400" : "text-slate-400"
@@ -87,8 +93,8 @@ const Sidebar = () => {
           <Image
             src={sidebarImg3}
             alt="sidebar image 02"
-            className=""
-            style={{height : '640px', width : '900px', objectFit : 'fill'}}
+            className="lg:h-[640px]"
+            style={{ width : '900px', objectFit : 'fill'}}
           />
         )}
       </div>
