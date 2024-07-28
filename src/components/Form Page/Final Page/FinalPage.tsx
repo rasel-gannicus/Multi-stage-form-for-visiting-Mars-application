@@ -2,6 +2,9 @@ import { useAppSelector } from "@/Redux/store/reduxHooks";
 import { ubuntu } from "../StageOne/StageOne";
 import marsMan from "@/assets/img/mars_man-removebg-preview.png";
 import Image from "next/image";
+import Confetti from "react-confetti";
+import { useWindowSize } from "react-use";
+import { useEffect, useState } from "react";
 
 const FinalPage = () => {
   const fullInfo = useAppSelector((state) => state);
@@ -9,13 +12,30 @@ const FinalPage = () => {
   const secondPageInformation: any = fullInfo.formData2.secondPageInformation;
   const thirdPageInformation: any = fullInfo.formData3.thirdPageInformation;
 
-  //   console.log(firstPageInformation);
+  const { width, height } = useWindowSize();
+  const [showConfetti, setShowConfetti] = useState(false);
+
+  useEffect(() => {
+    setShowConfetti(true);
+    setTimeout(() => {
+      setShowConfetti(false);
+    }, 6000);
+  }, []);
   return (
     <div className="xl:h-full px-8">
       <div className="flex flex-col justify-center items-center gap-4">
         <h2 className="mt-14 text-center text-4xl lg:text-5xl text-green-500 uppercase font-semibold">
           Congrats !
         </h2>
+        {showConfetti && (
+          <Confetti
+            width={width}
+            height={height}
+            numberOfPieces={500}
+            gravity={0.3}
+            run={showConfetti}
+          />
+        )}
         <h2 className="text-center text-xl">
           You have successfully submitted for the Mars Visiting form.
         </h2>
