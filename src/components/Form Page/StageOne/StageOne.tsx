@@ -9,6 +9,7 @@ import { Ubuntu } from "next/font/google";
 import { useAppDispatch, useAppSelector } from "@/Redux/store/reduxHooks";
 import { goToPage } from "@/Redux/features/pageRouting/pageRoutingSlice";
 import { fillUpFirstFormData } from "@/Redux/features/Form Information/formSlice";
+import Datepicker from "react-tailwindcss-datepicker";
 
 // --- font for button
 export const ubuntu = Ubuntu({
@@ -202,20 +203,19 @@ const StageOne = () => {
               </label>
 
               <div className="relative">
-                <input
-                  onChange={(e) =>
+                <Datepicker
+                  inputClassName="w-full rounded-md focus:ring-0 font-normal border-2 py-3 mt-3 px-3 "
+                  useRange={false}
+                  asSingle={true}
+                  popoverDirection="down"
+                  value={formdata.dateOfBirth}onChange={(e) =>
                     dispatch(
                       fillUpFirstFormData({
                         property: "dateOfBirth",
-                        value: e.target.value,
+                        value: e,
                       })
                     )
                   }
-                  value={formdata.dateOfBirth}
-                  // required
-                  type="date"
-                  className="w-full rounded-lg border-2 border-gray-200 text-gray-400 p-4 pe-12 mt-2 text-sm "
-                  placeholder="Date of birth"
                 />
               </div>
             </div>

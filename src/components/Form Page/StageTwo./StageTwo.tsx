@@ -24,7 +24,6 @@ const StageTwo = () => {
   );
   const { departureDate, returnDate, accomodation, specialPreferences } =
     formdata2;
-  console.log(formdata2);
 
   // --- getting input value from Form and passing them to redux store
   const handleInputChange = (

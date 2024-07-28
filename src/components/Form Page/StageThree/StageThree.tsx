@@ -120,7 +120,7 @@ const StageThree = () => {
 
                 <PhoneInput
                   // required
-                  placeholder="Enter phone number"
+                  placeholder="Emergency phone number"
                   value={phoneNumber}
                   onChange={(e: any) =>
                     handleInputChange("emergencyContact", {

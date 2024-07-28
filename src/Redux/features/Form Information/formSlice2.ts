@@ -4,7 +4,7 @@ export interface TInitialStateForm2 {
   secondPageInformation: {
     departureDate: {
       startDate: Date | null ;
-      endDate: Date | null | string;
+      endDate: Date | null ;
     };
     returnDate: {
       startDate: Date | null;

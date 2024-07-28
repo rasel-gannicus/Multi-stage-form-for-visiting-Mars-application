@@ -5,7 +5,10 @@ interface TInitialState {
     firstName: string;
     lastName: string;
     email: string;
-    dateOfBirth: string;
+    dateOfBirth: {
+      startDate: Date | null;
+      endDate: Date | null;
+    };
     country: string;
     phone: string;
   };
@@ -18,7 +21,10 @@ const initialState: TInitialState = {
     firstName: "",
     lastName: "",
     email: "",
-    dateOfBirth: "",
+    dateOfBirth: {
+      startDate: null,
+      endDate: null,
+    },
     country: "",
     phone: "",
   },
