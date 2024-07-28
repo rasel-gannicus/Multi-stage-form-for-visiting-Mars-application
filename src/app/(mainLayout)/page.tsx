@@ -1,6 +1,7 @@
 "use client";
 import { useAppDispatch, useAppSelector } from "@/Redux/store/reduxHooks";
 import StageOne from "@/components/Form Page/StageOne/StageOne";
+import StageThree from "@/components/Form Page/StageThree/StageThree";
 import StageTwo from "@/components/Form Page/StageTwo./StageTwo";
 import Sidebar from "@/components/Sidebar/Sidebar";
 
@@ -16,6 +17,7 @@ export default function Home() {
       <div className="flex-2 w-full flex flex-col items-center justify-start overflow-hidden">
         {pageStatus == 1 && <StageOne />} 
         {pageStatus == 2 && <StageTwo />} 
+        {pageStatus == 3 && <StageThree />} 
       </div>
     </main>
   );

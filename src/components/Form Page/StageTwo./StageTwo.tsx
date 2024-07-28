@@ -19,20 +19,19 @@ const StageTwo = () => {
   const formdata2 = useAppSelector(
     (state) => state.formData2.secondPageInformation
   );
-  console.log(formdata2);
+  const { departureDate, returnDate, accomodation, specialPreferences } =
+    formdata2;
 
   // --- handling departure & return date
-  const [returnDate, setReturnDate] = useState(formdata2.returnDate);
 
   const handleDepartureDate = (newValue: any) => {
-    dispatch(fillUpSecondFormData({property : 'departureDate', value : newValue}));
+    dispatch(
+      fillUpSecondFormData({ property: "departureDate", value: newValue })
+    );
   };
   const handleReturnDate = (newValue: any) => {
-    dispatch(fillUpSecondFormData({property : 'returnDate', value : newValue}));
+    dispatch(fillUpSecondFormData({ property: "returnDate", value: newValue }));
   };
-
-  const [hotel, setHotel] = useState("no hotel");
-  const [specialPref, setSpecialPref] = useState(false);
 
   //   --- function for submitting form
   const handleSubmit = (e: { preventDefault: () => void }) => {
@@ -52,7 +51,7 @@ const StageTwo = () => {
           {/* ------------------------- Form  -------------------------- */}
           <form
             onSubmit={handleSubmit}
-            className="mx-auto mb-0 mt-8 max-w-lg space-y-4 "
+            className="mx-auto mb-0 mt-8 max-w-lg space-y-4 text-lg"
           >
             {/* --- Departure Date --- */}
             <div>
@@ -65,7 +64,8 @@ const StageTwo = () => {
                   inputClassName="w-full rounded-md focus:ring-0 font-normal border-2 py-3 px-3 "
                   useRange={false}
                   asSingle={true}
-                  value={formdata2.departureDate}
+                  popoverDirection="down"
+                  value={departureDate}
                   onChange={handleDepartureDate}
                 />
               </div>
@@ -82,7 +82,8 @@ const StageTwo = () => {
                   inputClassName="w-full rounded-md focus:ring-0 font-normal border-2 py-3 px-3 "
                   useRange={false}
                   asSingle={true}
-                  value={formdata2.returnDate}
+                  popoverDirection="down"
+                  value={returnDate}
                   onChange={handleReturnDate}
                 />
               </div>
@@ -103,7 +104,15 @@ const StageTwo = () => {
                       id=""
                       value="space-hotel"
                       className="w-5 h-5 cursor-pointer"
-                      onChange={(e) => setHotel(e.target.value)}
+                      checked={accomodation == "space-hotel"}
+                      onChange={(e) =>
+                        dispatch(
+                          fillUpSecondFormData({
+                            property: "accomodation",
+                            value: e.target.value,
+                          })
+                        )
+                      }
                     />
                     <span className="cursor-pointer">Space Hotel</span>
                   </span>
@@ -125,7 +134,15 @@ const StageTwo = () => {
                       id=""
                       value="martian-base"
                       className="w-5 h-5 cursor-pointer"
-                      onChange={(e) => setHotel(e.target.value)}
+                      checked={accomodation == "martian-base"}
+                      onChange={(e) =>
+                        dispatch(
+                          fillUpSecondFormData({
+                            property: "accomodation",
+                            value: e.target.value,
+                          })
+                        )
+                      }
                     />
                     <span className="cursor-pointer">Martian Base</span>
                   </span>
@@ -150,9 +167,16 @@ const StageTwo = () => {
                       name="special-preferences"
                       id=""
                       value="yes"
-                      checked={specialPref}
+                      checked={specialPreferences.statues}
                       className="w-5 h-5 cursor-pointer"
-                      onChange={() => setSpecialPref(true)}
+                      onChange={() =>
+                        dispatch(
+                          fillUpSecondFormData({
+                            property: "specialPreferences",
+                            value: { statues: true, description: "" },
+                          })
+                        )
+                      }
                     />
                     <span className="cursor-pointer">Yes</span>
                   </span>
@@ -164,15 +188,22 @@ const StageTwo = () => {
                       name="special-preferences"
                       id=""
                       value="no"
-                      checked={!specialPref}
+                      checked={!specialPreferences.statues}
                       className="w-5 h-5 cursor-pointer"
-                      onChange={() => setSpecialPref(false)}
+                      onChange={() =>
+                        dispatch(
+                          fillUpSecondFormData({
+                            property: "specialPreferences",
+                            value: { statues: false, description: "" },
+                          })
+                        )
+                      }
                     />
                     <span className="cursor-pointer">No</span>
                   </span>
                 </label>
               </div>
-              {specialPref && (
+              {specialPreferences.statues && (
                 <div className="my-5">
                   <p>Describe your special preferences : </p>
                   <textarea
@@ -180,7 +211,16 @@ const StageTwo = () => {
                     id=""
                     rows={5}
                     required
-                    className="border-2 my-5 w-full "
+                    className="border-2 my-5 w-full p-3"
+                    value={specialPreferences.description}
+                    onChange={(e) =>
+                      dispatch(
+                        fillUpSecondFormData({
+                          property: "specialPreferences",
+                          value: { statues: true, description: e.target.value },
+                        })
+                      )
+                    }
                   ></textarea>
                 </div>
               )}

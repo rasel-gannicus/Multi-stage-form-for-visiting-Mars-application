@@ -32,7 +32,7 @@ const initialState: TInitialStateForm2 = {
       startDate: null,
       endDate: null,
     },
-    accomodation: "",
+    accomodation: "martian-base",
     specialPreferences: {
       statues: false,
       description: "",
@@ -44,6 +44,7 @@ const formSlice2 = createSlice({
   name: "form2",
   initialState,
   reducers: {
+
     fillUpSecondFormData: (
       state,
       action: PayloadAction<{ property: SecondPageInformationKeys; value: any }>

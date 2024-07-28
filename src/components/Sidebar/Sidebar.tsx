@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import sidebarImg1 from "@/assets/img/ai-generated-8153530_1280.png";
 import sidebarImg2 from "@/assets/img/mars 3.jpg";
+import sidebarImg3 from "@/assets/img/mars 2.jpg";
 import { useAppSelector } from "@/Redux/store/reduxHooks";
 
 const Sidebar = () => {
@@ -80,6 +81,14 @@ const Sidebar = () => {
             src={sidebarImg2}
             alt="sidebar image 02"
             className=""
+          />
+        )}
+        {pageStatus == 3 && (
+          <Image
+            src={sidebarImg3}
+            alt="sidebar image 02"
+            className=""
+            style={{height : '640px', width : '900px', objectFit : 'fill'}}
           />
         )}
       </div>

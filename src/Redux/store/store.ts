@@ -3,6 +3,7 @@ import { apiSlice } from "../features/api/apiSlice";
 import pageRoutingReducer from "../features/pageRouting/pageRoutingSlice";
 import formDataReducer from "../features/Form Information/formSlice";
 import formDataReducer2 from "../features/Form Information/formSlice2";
+import formDataReducer3 from "../features/Form Information/formSlice3";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     pageRouting: pageRoutingReducer,
     formData: formDataReducer,
     formData2: formDataReducer2,
+    formData3: formDataReducer3,
   },
   middleware: (getDefaultMiddleWares) =>
     getDefaultMiddleWares().concat(apiSlice.middleware),
