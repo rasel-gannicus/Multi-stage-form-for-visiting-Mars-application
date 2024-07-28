@@ -3,7 +3,11 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 export interface TInitialStateForm3 {
   thirdPageInformation: {
     healthDeclaration: string;
-    emergencyContact: string;
+    emergencyContact: {
+        name : string ;
+        phone : string ;
+        email : string ; 
+    };
     medicalConditions: string;
   };
 }
@@ -11,7 +15,11 @@ export interface TInitialStateForm3 {
 const initialState: TInitialStateForm3 = {
   thirdPageInformation: {
     healthDeclaration: "",
-    emergencyContact: "",
+    emergencyContact: {
+        name : '',
+        phone : '' , 
+        email : '' ,
+    },
     medicalConditions: "",
   },
 };
@@ -24,7 +32,6 @@ const formSlice3 = createSlice({
       state,
       action: PayloadAction<{ property: keyof TInitialStateForm3["thirdPageInformation"]; value: any }>
     ) => {
-        console.log(state);
       const { property, value } = action.payload;
       state.thirdPageInformation[property] = value;
     },

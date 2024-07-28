@@ -35,7 +35,7 @@ const StageOne = () => {
     dispatch(goToPage(2));
   };
 
-  // --- for 'Select Phone Number' menubar
+  // --- for 'Select Phone Number' 
   const [phoneNumber, setPhoneNumber] = useState(formdata.phone);
 
   useEffect(() => {
@@ -186,7 +186,7 @@ const StageOne = () => {
                   // required
                   type="email"
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm border-2"
-                  placeholder="Your email"
+                  placeholder="email"
                 />
 
                 <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
