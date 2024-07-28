@@ -6,7 +6,10 @@ import dummyImg1 from "@/assets/img/martian hotel 2.jpeg";
 import dummyImg2 from "@/assets/img/martian hotel 3.png";
 import { ubuntu } from "../StageOne/StageOne";
 import Datepicker from "react-tailwindcss-datepicker";
-import { fillUpSecondFormData } from "@/Redux/features/Form Information/formSlice2";
+import {
+  TInitialStateForm2,
+  fillUpSecondFormData,
+} from "@/Redux/features/Form Information/formSlice2";
 
 const StageTwo = () => {
   //   --- changing form page with redux
@@ -21,16 +24,14 @@ const StageTwo = () => {
   );
   const { departureDate, returnDate, accomodation, specialPreferences } =
     formdata2;
+  console.log(formdata2);
 
-  // --- handling departure & return date
-
-  const handleDepartureDate = (newValue: any) => {
-    dispatch(
-      fillUpSecondFormData({ property: "departureDate", value: newValue })
-    );
-  };
-  const handleReturnDate = (newValue: any) => {
-    dispatch(fillUpSecondFormData({ property: "returnDate", value: newValue }));
+  // --- getting input value from Form and passing them to redux store
+  const handleInputChange = (
+    property: keyof TInitialStateForm2["secondPageInformation"],
+    value: any
+  ) => {
+    dispatch(fillUpSecondFormData({ property, value }));
   };
 
   //   --- function for submitting form
@@ -66,7 +67,7 @@ const StageTwo = () => {
                   asSingle={true}
                   popoverDirection="down"
                   value={departureDate}
-                  onChange={handleDepartureDate}
+                  onChange={(e) => handleInputChange("departureDate", e)}
                 />
               </div>
             </div>
@@ -84,7 +85,7 @@ const StageTwo = () => {
                   asSingle={true}
                   popoverDirection="down"
                   value={returnDate}
-                  onChange={handleReturnDate}
+                  onChange={(e) => handleInputChange("returnDate", e)}
                 />
               </div>
             </div>
@@ -92,7 +93,7 @@ const StageTwo = () => {
             {/* --- Accomodation Preferenes --- */}
 
             <h2 className=" text-left text-sm md:text-lg pt-5">
-              Accomodation Preferences :{" "}
+              Accomodation Preferences :
             </h2>
             <div className="flex flex-col lg:flex-row gap-3 justify-between items-start">
               <div>
@@ -106,12 +107,7 @@ const StageTwo = () => {
                       className="w-5 h-5 cursor-pointer"
                       checked={accomodation == "space-hotel"}
                       onChange={(e) =>
-                        dispatch(
-                          fillUpSecondFormData({
-                            property: "accomodation",
-                            value: e.target.value,
-                          })
-                        )
+                        handleInputChange("accomodation", e.target.value)
                       }
                     />
                     <span className="cursor-pointer">Space Hotel</span>
@@ -136,12 +132,7 @@ const StageTwo = () => {
                       className="w-5 h-5 cursor-pointer"
                       checked={accomodation == "martian-base"}
                       onChange={(e) =>
-                        dispatch(
-                          fillUpSecondFormData({
-                            property: "accomodation",
-                            value: e.target.value,
-                          })
-                        )
+                        handleInputChange("accomodation", e.target.value)
                       }
                     />
                     <span className="cursor-pointer">Martian Base</span>
@@ -169,13 +160,11 @@ const StageTwo = () => {
                       value="yes"
                       checked={specialPreferences.statues}
                       className="w-5 h-5 cursor-pointer"
-                      onChange={() =>
-                        dispatch(
-                          fillUpSecondFormData({
-                            property: "specialPreferences",
-                            value: { statues: true, description: "" },
-                          })
-                        )
+                      onChange={(e) =>
+                        handleInputChange("specialPreferences", {
+                          ...specialPreferences,
+                          statues: true,
+                        })
                       }
                     />
                     <span className="cursor-pointer">Yes</span>
@@ -190,13 +179,11 @@ const StageTwo = () => {
                       value="no"
                       checked={!specialPreferences.statues}
                       className="w-5 h-5 cursor-pointer"
-                      onChange={() =>
-                        dispatch(
-                          fillUpSecondFormData({
-                            property: "specialPreferences",
-                            value: { statues: false, description: "" },
-                          })
-                        )
+                      onChange={(e) =>
+                        handleInputChange("specialPreferences", {
+                          ...specialPreferences,
+                          statues: false,
+                        })
                       }
                     />
                     <span className="cursor-pointer">No</span>
@@ -214,12 +201,10 @@ const StageTwo = () => {
                     className="border-2 my-5 w-full p-3"
                     value={specialPreferences.description}
                     onChange={(e) =>
-                      dispatch(
-                        fillUpSecondFormData({
-                          property: "specialPreferences",
-                          value: { statues: true, description: e.target.value },
-                        })
-                      )
+                      handleInputChange("specialPreferences", {
+                        ...specialPreferences,
+                        description: e.target.value,
+                      })
                     }
                   ></textarea>
                 </div>

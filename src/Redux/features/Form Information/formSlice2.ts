@@ -50,7 +50,6 @@ const formSlice2 = createSlice({
       action: PayloadAction<{ property: SecondPageInformationKeys; value: any }>
     ) => {
       const { property, value } = action.payload;
-      console.log(action.payload);
 
       state.secondPageInformation[property] = value;
     },

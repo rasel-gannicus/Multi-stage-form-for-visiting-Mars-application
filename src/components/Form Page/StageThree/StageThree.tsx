@@ -17,6 +17,7 @@ const StageThree = () => {
   const { healthDeclaration, emergencyContact, medicalConditions } = formdata3;
   console.log(emergencyContact);
 
+  // --- getting input value from Form and passing them to redux store
   const handleInputChange = (
     property: keyof TInitialStateForm3["thirdPageInformation"],
     value: any
