@@ -22,7 +22,7 @@ export const ubuntu = Ubuntu({
 const StageOne = () => {
   // --- getting current page position in form with Redux
   const pageStatus = useAppSelector((state) => state.pageRouting.currentPage);
-  // --- getting formdata from Redux store 
+  // --- getting formdata from Redux store
   const formdata = useAppSelector(
     (state) => state.formData.firstPageInformation
   );
@@ -36,7 +36,7 @@ const StageOne = () => {
     dispatch(goToPage(2));
   };
 
-  // --- for 'Select Phone Number' 
+  // --- for 'Select Phone Number'
   const [phoneNumber, setPhoneNumber] = useState(formdata.phone);
 
   useEffect(() => {
@@ -90,13 +90,11 @@ const StageOne = () => {
   }, [selectedCountry]);
 
   return (
-    <div className="flex flex-col justify-between relative  h-[640px] items-end">
-      <div className=" h-[550px] overflow-y-scroll py-2">
-        <div className="mx-auto max-w-screen-2xl px-4  sm:px-6 lg:px-8 ">
+    <div className="flex flex-col justify-between overflow-y-scroll  h-[80%]  items-end">
+      <div className="py-2">
+        <div className="mx-auto max-w-screen-2xl px-4 ">
           <div className="mx-auto max-w-lg text-center">
-            <h1 className="text-2xl font-bold sm:text-3xl">
-              Book your sit today
-            </h1>
+            <h1 className="lg:text-2xl font-bold ">Book your sit today</h1>
 
             <p className="mt-4 text-gray-500">
               Going to Mars ain&apos;t that hard
@@ -187,7 +185,7 @@ const StageOne = () => {
                   // required
                   type="email"
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm border-2"
-                  placeholder="email"
+                  placeholder="Your email"
                 />
 
                 <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -202,13 +200,14 @@ const StageOne = () => {
                 Date of birth
               </label>
 
-              <div className="relative">
+              <div className="relative mt-3">
                 <Datepicker
-                  inputClassName="w-full rounded-md focus:ring-0 font-normal border-2 py-3 mt-3 px-3 "
+                  inputClassName="w-full rounded-md focus:ring-0 font-normal border-2 py-3 px-3 "
                   useRange={false}
                   asSingle={true}
                   popoverDirection="down"
-                  value={formdata.dateOfBirth}onChange={(e) =>
+                  value={formdata.dateOfBirth}
+                  onChange={(e: any) =>
                     dispatch(
                       fillUpFirstFormData({
                         property: "dateOfBirth",
@@ -251,27 +250,27 @@ const StageOne = () => {
               />
             </div>
 
-            {/* ---------------- Next Page Button ---------------- */}
-            <button
-              type="submit"
-              className={`${ubuntu.className} inline-block rounded bg-slate-600 hover:bg-slate-500 px-8 py-3  font-medium text-white absolute bottom-0 right-0`}
-            >
-              Next
-            </button>
+            <div className="flex items-center justify-between  w-full ">
+              {/* ---------------- Previous Page Button ---------------- */}
+              {pageStatus != 1 && (
+                <button
+                  type="submit"
+                  className={`${ubuntu.className} inline-block rounded bg-yellow-400 hover:bg-yellow-300  px-5 py-3  font-medium text-gray-600 duration-300 transition-all absolute bottom-0 left-0 xl:left-[5%] `}
+                >
+                  Go Back
+                </button>
+              )}
+              <div></div>
+              {/* ---------------- Next Page Button ---------------- */}
+              <button
+                type="submit"
+                className={`${ubuntu.className} inline-block rounded bg-slate-600 hover:bg-slate-500 px-8 py-3  font-medium text-white absolute bottom-0 right-0 xl:right-[5%]`}
+              >
+                Next
+              </button>
+            </div>
           </form>
         </div>
-      </div>
-
-      {/* ---------------- Previous Page Button ---------------- */}
-      <div className="flex items-center justify-between  w-full px-8">
-        {pageStatus != 1 && (
-          <button
-            type="submit"
-            className={`${ubuntu.className} inline-block rounded bg-yellow-400 hover:bg-yellow-300  px-5 py-3  font-medium text-gray-600 duration-300 transition-all`}
-          >
-            Go Back
-          </button>
-        )}
       </div>
     </div>
   );

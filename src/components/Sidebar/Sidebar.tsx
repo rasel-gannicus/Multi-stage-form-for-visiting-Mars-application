@@ -10,7 +10,7 @@ const Sidebar = () => {
   const pageStatus = useAppSelector((state) => state.pageRouting.currentPage);
 
   return (
-    <div className="lg:w-[400px] mx-auto lg:min-h-[640px] h-[90%] rounded-lg bg-blue-400 flex flex-col justify-start items-center py-8 lg:py-14 text-xl font-semibold text-white relative overflow-hidden">
+    <div className="lg:w-[400px] mx-auto rounded-lg bg-blue-400 flex flex-col justify-start items-center py-8 lg:py-14 text-xl font-semibold text-white relative overflow-hidden h-full ">
       {/* --- Sidebar Page indicator --- */}
       <div className=" z-50 flex flex-wrap w-full gap-3 lg:gap-10 lg:flex-col justify-center items-start lg:ps-5 ">
         {/* --- Indicator 01 --- */}

@@ -6,8 +6,8 @@ interface TInitialState {
     lastName: string;
     email: string;
     dateOfBirth: {
-      startDate: Date | null;
-      endDate: Date | null;
+      startDate: Date | null | string;
+      endDate: Date | null | string;
     };
     country: string;
     phone: string;

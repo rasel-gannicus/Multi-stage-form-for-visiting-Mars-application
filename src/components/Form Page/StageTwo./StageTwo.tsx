@@ -39,8 +39,8 @@ const StageTwo = () => {
     dispatch(goToPage(3));
   };
   return (
-    <div className="flex flex-col justify-between relative  h-[640px] items-end  lg:min-w-[500px] xl:min-w-[600px] ">
-      <div className=" h-[550px] overflow-y-scroll py-2 w-full ">
+    <div className="flex flex-col justify-between overflow-y-scroll  h-[80%] items-end  lg:min-w-[500px] xl:min-w-[600px] ">
+      <div className=" py-2 w-full ">
         <div className="mx-auto max-w-screen-2xl px-4  sm:px-6 lg:px-8 w-full ">
           <div className="mx-auto max-w-lg text-center">
             <h1 className="text-2xl font-bold sm:text-3xl">
@@ -213,7 +213,7 @@ const StageTwo = () => {
             {/* ---------------- Next Page Button ---------------- */}
             <button
               type="submit"
-              className={`${ubuntu.className} inline-block rounded bg-slate-600 hover:bg-slate-500 px-3 md:px-8 py-3  font-medium text-white absolute bottom-0 right-0`}
+              className={`${ubuntu.className} inline-block rounded bg-slate-600 hover:bg-slate-500 px-3 md:px-8 py-3  font-medium text-white absolute bottom-0 right-0 xl:right-[5%] `}
             >
               Next
             </button>
@@ -227,7 +227,7 @@ const StageTwo = () => {
           <button
             onClick={() => dispatch(goToPage(1))}
             type="submit"
-            className={`${ubuntu.className} inline-block rounded bg-yellow-400 hover:bg-yellow-300 px-3 md:px-5 py-3  font-medium text-gray-600 duration-300 transition-all`}
+            className={`${ubuntu.className} inline-block rounded bg-yellow-400 hover:bg-yellow-300 px-3 md:px-5 py-3  font-medium text-gray-600 duration-300 transition-all absolute bottom-0 left-0 xl:left-[5%] `}
           >
             Go Back
           </button>
