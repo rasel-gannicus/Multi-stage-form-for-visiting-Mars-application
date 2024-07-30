@@ -88,6 +88,7 @@ const StageOne = () => {
       })
     );
   }, [selectedCountry]);
+  console.log(process.env.NEXT_PUBLIC_SECRET);
 
   return (
     <div className="flex flex-col justify-between overflow-y-scroll  h-[80%]  items-end w-full">

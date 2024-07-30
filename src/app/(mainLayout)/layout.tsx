@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Poppins, Ubuntu } from "next/font/google";
 import Providers from "@/lib/Providers";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/utils/authOptions";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,11 +27,13 @@ export const metadata: Metadata = {
   description: "Application form for going into Mars",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getServerSession(authOptions);
+  console.log(session);
   return (
     <Providers>
       <html lang="en">
