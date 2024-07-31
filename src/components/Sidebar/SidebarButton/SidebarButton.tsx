@@ -9,8 +9,7 @@ const SidebarButton = (props: any) => {
   const { pageStatus, userStatus } = props.props;
 
   const dispatch = useDispatch();
-
-  console.log(pageStatus);
+  
   return (
     <>
       {pageStatus != "login" && pageStatus != "register" && (

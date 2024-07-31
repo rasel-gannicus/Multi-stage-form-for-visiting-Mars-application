@@ -1,4 +1,7 @@
-"use server" ; 
+"use server" ;
+import { toast } from "react-hot-toast";
+
+ 
 
 export const registerUser = async(data : any) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BACKENED_URL}/register`,{
@@ -10,5 +13,6 @@ export const registerUser = async(data : any) => {
         cache : "no-store" ,        
     }); 
     const userInfo = await res.json() ;
+    // console.log(userInfo);
     return userInfo ; 
 }

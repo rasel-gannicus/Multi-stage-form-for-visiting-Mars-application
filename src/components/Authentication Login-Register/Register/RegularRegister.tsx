@@ -1,21 +1,48 @@
+"use client";
+import { goToPage } from "@/Redux/features/pageRouting/pageRoutingSlice";
+import { registerUser } from "@/utils/actions/registerUser";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 import { FaRegUser } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { IoKeyOutline } from "react-icons/io5";
+import { useDispatch } from "react-redux";
 
 const RegularRegister = () => {
-    const [name, setName] = useState('') ; 
-    const [email, setEmail] = useState('') ;
-    const [password, setPassword] = useState('') ;
-    const [repassword, setRepassword] = useState('') ; 
+  const dispatch = useDispatch();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [repassword, setRepassword] = useState("");
 
-    const handleSubmit = (e : { preventDefault: () => void }) => {
-        e.preventDefault() ;
-        if(password !== repassword){
-            window.alert("Password didn't matched")
-        }
-        console.log({name, email, password, repassword});
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    if (password !== repassword) {
+      // window.alert("Password didn't matched");
+      toast.error("Password didn't matched");
+      return;
     }
+    if (password.length < 6) {
+      toast.error("Password should be atleast 6 characters long !");
+      return;
+    }
+    try {
+      const res = await registerUser({
+        name,
+        email,
+        password,
+      });
+      if (!res.success) {
+        toast(res.message);
+      } else if (res.success) {
+        toast.success(res.message + " Now login please !");
+        dispatch(goToPage("login"));
+      }
+    } catch (err: any) {
+      toast.error(err.message);
+      throw new Error(err.message);
+    }
+  };
   return (
     <form
       onSubmit={handleSubmit}

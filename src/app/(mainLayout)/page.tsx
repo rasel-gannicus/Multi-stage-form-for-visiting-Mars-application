@@ -9,6 +9,7 @@ import marsMan from "@/assets/img/mars_man-removebg-preview.png";
 import Image from "next/image";
 import Login from "@/components/Authentication Login-Register/Login/Login";
 import Register from "@/components/Authentication Login-Register/Register/Register";
+import { Toaster } from "react-hot-toast";
 
 
 
@@ -33,6 +34,8 @@ export default function Home() {
       </div>
       
       {pageStatus == 4 && <Image src={marsMan} alt="marsman pic" className="w-[250px] fixed bottom-0 right-0 z-50 hidden lg:block " />}
+
+      <Toaster />
     </main>
   );
 }
