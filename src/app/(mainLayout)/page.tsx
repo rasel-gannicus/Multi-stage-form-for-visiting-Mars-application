@@ -7,8 +7,8 @@ import StageTwo from "@/components/Form Page/StageTwo./StageTwo";
 import Sidebar from "@/components/Sidebar/Sidebar";
 import marsMan from "@/assets/img/mars_man-removebg-preview.png";
 import Image from "next/image";
-import Login from "@/components/Login/Login";
-import Register from "@/components/Form Page/Register/Register";
+import Login from "@/components/Authentication Login-Register/Login/Login";
+import Register from "@/components/Authentication Login-Register/Register/Register";
 
 
 
