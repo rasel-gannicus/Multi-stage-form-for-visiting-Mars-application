@@ -4,7 +4,6 @@ import { MdDriveFileRenameOutline } from "react-icons/md";
 import Select from "react-select";
 import { HiOutlineMail } from "react-icons/hi";
 import PhoneInput from "react-phone-number-input";
-import React, { ChangeEvent } from "react";
 import { Ubuntu } from "next/font/google";
 import { useAppDispatch, useAppSelector } from "@/Redux/store/reduxHooks";
 import { goToPage } from "@/Redux/features/pageRouting/pageRoutingSlice";
@@ -26,6 +25,7 @@ const StageOne = () => {
   const formdata = useAppSelector(
     (state) => state.formData.firstPageInformation
   );
+
 
   //   --- changing form page with redux
   const dispatch = useAppDispatch();
@@ -88,8 +88,7 @@ const StageOne = () => {
       })
     );
   }, [selectedCountry]);
-  console.log(process.env.NEXT_PUBLIC_SECRET);
-
+  
   return (
     <div className="flex flex-col justify-between overflow-y-scroll  h-[80%]  items-end w-full">
       <div className="py-2 w-full">

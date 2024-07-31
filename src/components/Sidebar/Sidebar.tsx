@@ -1,9 +1,12 @@
+
 import Image from "next/image";
 import React from "react";
 import sidebarImg1 from "@/assets/img/ai-generated-8153530_1280.png";
 import sidebarImg2 from "@/assets/img/mars 3.jpg";
 import sidebarImg3 from "@/assets/img/mars 2.jpg";
 import { useAppSelector } from "@/Redux/store/reduxHooks";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/utils/authOptions";
 
 const Sidebar = () => {
   // --- getting current page position in form with Redux
@@ -93,8 +96,8 @@ const Sidebar = () => {
           <Image
             src={sidebarImg3}
             alt="sidebar image 02"
-            className="lg:h-[640px]"
-            style={{ width : '900px', objectFit : 'fill'}}
+            // className="lg:h-[640px]"
+            style={{ width : '1400px', objectFit : 'fill'}}
           />
         )}
       </div>

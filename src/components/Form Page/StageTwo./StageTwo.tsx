@@ -212,11 +212,11 @@ const StageTwo = () => {
 
             {/* ---------------- Next Page Button ---------------- */}
             <button
-                type="submit"
-                className={`${ubuntu.className} inline-block rounded bg-slate-600 hover:bg-slate-500 w-24 h-12  font-medium text-white absolute bottom-0 right-0 xl:right-[5%]`}
-              >
-                Next
-              </button>
+              type="submit"
+              className={`${ubuntu.className} inline-block rounded bg-slate-600 hover:bg-slate-500 w-24 h-12  font-medium text-white absolute bottom-0 right-0 xl:right-[5%]`}
+            >
+              Next
+            </button>
           </form>
         </div>
       </div>

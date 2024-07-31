@@ -8,11 +8,15 @@ import Sidebar from "@/components/Sidebar/Sidebar";
 import marsMan from "@/assets/img/mars_man-removebg-preview.png";
 import Image from "next/image";
 
+
+
 export default function Home() {
   const pageStatus = useAppSelector((state) => state.pageRouting.currentPage);
+  const userStatus = useAppSelector(state => state.userSlice.user) ;
+  console.log(userStatus);
 
   return (
-    <main className={`flex flex-col lg:flex-row rounded-lg gap-5 max-w-[90%] 2xl:max-w-[1300px] mx-auto items-start justify-between px-5 py-5 shadow-2xl bg-white ${pageStatus !=4 ? "h-[90vh] 2xl:h-[750px]" : "h-full my-10 py-10"} overflow-hidden `}>
+    <main className={`flex flex-col lg:flex-row rounded-lg gap-5 max-w-[90%] 2xl:max-w-[1300px] mx-auto items-start justify-between px-5 py-5 shadow-2xl bg-white ${pageStatus !=4 ? "h-[90vh] xl:h-[650px]" : "h-full my-10 py-10"} overflow-hidden `}>
       <div className="flex-1 w-full h-full ">
       {pageStatus != 4 && <Sidebar />} 
         
