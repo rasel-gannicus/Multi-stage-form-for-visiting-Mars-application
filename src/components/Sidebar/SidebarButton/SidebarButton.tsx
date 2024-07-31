@@ -9,6 +9,8 @@ const SidebarButton = (props: any) => {
   const { pageStatus, userStatus } = props.props;
 
   const dispatch = useDispatch();
+
+  console.log(pageStatus);
   return (
     <>
       {pageStatus != "login" && pageStatus != "register" && (
@@ -40,7 +42,7 @@ const SidebarButton = (props: any) => {
         </div>
       )}
 
-      {pageStatus == "login" && (
+      {(pageStatus == "login" || pageStatus == "register") && (
         <button
           className={` ${ubuntu.className} bg-white z-50 py-2 px-2 text-black absolute bottom-1 left-[50%] translate-x-[-50%] rounded flex justify-center items-center font-normal text-sm gap-2  border-2 transition-all duration-300 hover:bg-slate-700 hover:text-white`}
           onClick={() => dispatch(goToPage(1))}

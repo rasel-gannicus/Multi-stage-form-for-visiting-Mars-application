@@ -4,6 +4,7 @@ import sidebarImg1 from "@/assets/img/ai-generated-8153530_1280.png";
 import sidebarImg2 from "@/assets/img/mars 3.jpg";
 import sidebarImg3 from "@/assets/img/mars 2.jpg";
 import loginImg from "@/assets/img/space ai.jpg";
+import registerImg from "@/assets/img/space art.png";
 
 const SideBarImage = (props : any) => {
 
@@ -26,6 +27,14 @@ const SideBarImage = (props : any) => {
         {pageStatus == 'login' && (
           <Image
             src={loginImg}
+            alt="sidebar image 02"
+            className=" hidden lg:block absolute top-[50%] translate-y-[-50%] "
+            // style={{ width: "1400px", objectFit: "fill" }}
+          />
+        )}
+        {pageStatus == 'register' && (
+          <Image
+            src={registerImg}
             alt="sidebar image 02"
             className=" hidden lg:block absolute top-[50%] translate-y-[-50%] "
             // style={{ width: "1400px", objectFit: "fill" }}
