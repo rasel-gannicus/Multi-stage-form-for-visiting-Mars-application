@@ -5,9 +5,6 @@ import { Poppins } from "next/font/google";
 import Providers from "@/lib/Providers";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/utils/authOptions";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { addUserToRedux } from "@/Redux/features/user/userSlice";
 import CustomWrapper from "@/components/CustomWrapper/CustomWrapper";
 
 const inter = Inter({ subsets: ["latin"] });

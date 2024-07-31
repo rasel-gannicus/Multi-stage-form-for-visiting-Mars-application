@@ -1,18 +1,25 @@
 "use client";
 
 import { useEffect } from "react";
-import { useDispatch } from "react-redux"; 
+import { useDispatch } from "react-redux";
 import { addUserToRedux } from "@/Redux/features/user/userSlice";
 
 const CustomWrapper = ({
-  children, session
+  children,
+  session,
 }: {
   children: React.ReactNode;
-  session : any
+  session: any;
 }) => {
   const dispatch = useDispatch();
-  // console.log(session);
-  dispatch(addUserToRedux(session))
+
+  useEffect(() => {
+    if (session?.user) {
+      dispatch(addUserToRedux(session));
+    } else {
+      dispatch(addUserToRedux({ user: null }));
+    }
+  }, [session]);
 
   return <>{children}</>;
 };
