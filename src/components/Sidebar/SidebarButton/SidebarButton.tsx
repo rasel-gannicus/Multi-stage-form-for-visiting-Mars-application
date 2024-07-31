@@ -9,7 +9,7 @@ const SidebarButton = (props: any) => {
   const { pageStatus, userStatus } = props.props;
 
   const dispatch = useDispatch();
-  
+
   return (
     <>
       {pageStatus != "login" && pageStatus != "register" && (
@@ -20,7 +20,7 @@ const SidebarButton = (props: any) => {
               onClick={() => signOut()}
             >
               Log out
-              {(
+              {userStatus.image ? (
                 <Image
                   alt="user image"
                   src={userStatus.image}
@@ -28,7 +28,9 @@ const SidebarButton = (props: any) => {
                   height={30}
                   className="rounded-full"
                 />
-              ) || <FaUserAstronaut />}
+              ) : (
+                <FaUserAstronaut />
+              )}
             </button>
           ) : (
             <button

@@ -14,6 +14,7 @@ const RegularRegister = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repassword, setRepassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -27,18 +28,23 @@ const RegularRegister = () => {
       return;
     }
     try {
+      setLoading(true);
       const res = await registerUser({
         name,
         email,
         password,
       });
       if (!res.success) {
+        setLoading(false);
         toast(res.message);
-      } else if (res.success) {
+      }
+      if (res.success) {
+        setLoading(false);
         toast.success(res.message + " Now login please !");
         dispatch(goToPage("login"));
       }
     } catch (err: any) {
+      setLoading(false);
       toast.error(err.message);
       throw new Error(err.message);
     }
@@ -121,9 +127,12 @@ const RegularRegister = () => {
 
       <button
         type="submit"
-        className="bg-slate-700 hover:bg-slate-600 w-full rounded-full text-white text-lg py-3"
+        className={`${
+          loading ? "bg-slate-500" : "bg-slate-700"
+        } w-full rounded-full text-white text-lg py-3`}
+        disabled={loading}
       >
-        Register
+        {loading ? "Loading..." : "Register"}
       </button>
     </form>
   );

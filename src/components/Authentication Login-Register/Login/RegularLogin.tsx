@@ -1,28 +1,56 @@
+import { goToPage } from "@/Redux/features/pageRouting/pageRoutingSlice";
+import { addUserToRedux } from "@/Redux/features/user/userSlice";
+import { loginUser } from "@/utils/actions/loginUser";
+import { useState } from "react";
+import { toast } from "react-hot-toast";
 import { HiOutlineMail } from "react-icons/hi";
 import { IoKeyOutline } from "react-icons/io5";
+import { useDispatch } from "react-redux";
 
 const RegularLogin = () => {
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      const res = await loginUser({
+        email,
+        password,
+      });
+      if (!res.success) {
+        toast.error(res.message);
+        setLoading(false);
+      }
+      if (res.success) {
+        setLoading(false);
+        toast.success(res.message);
+        console.log(res.user);
+        dispatch(addUserToRedux({user : res.user})) ;
+        dispatch(goToPage(1));
+      }
+    } catch (err: any) {
+      setLoading(false);
+      toast.error(err.message);
+      console.log(err);
+      throw new Error(err.message);
+    }
+  };
   return (
     <form
-      // onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
       className="mx-auto mb-0 pb-4 mt-4 w-full xl:w-2/3  space-y-4 "
     >
-      {/* ---- Name Section ends  --- */}
-
       {/* --- Email --- */}
       <div>
         <div className="relative">
           <input
-            //   onChange={(e) =>
-            //     dispatch(
-            //       fillUpFirstFormData({
-            //         property: "email",
-            //         value: e.target.value,
-            //       })
-            //     )
-            //   }
-            //   value={formdata.email}
-            // required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
             type="email"
             className="w-full rounded-full border-gray-200 p-4 pe-12 text-sm border-2"
             placeholder="Your email"
@@ -37,16 +65,9 @@ const RegularLogin = () => {
       <div>
         <div className="relative">
           <input
-            //   onChange={(e) =>
-            //     dispatch(
-            //       fillUpFirstFormData({
-            //         property: "email",
-            //         value: e.target.value,
-            //       })
-            //     )
-            //   }
-            //   value={formdata.email}
-            // required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
             type="password"
             className="w-full rounded-full border-gray-200 p-4 pe-12 text-sm border-2"
             placeholder="Your password"
@@ -60,9 +81,10 @@ const RegularLogin = () => {
 
       <button
         type="submit"
-        className="bg-slate-700 w-full rounded-full text-white text-lg py-3"
+        className={`${loading ? 'bg-slate-500 text-yellow-400':'bg-slate-700 text-white'} w-full rounded-full  text-lg py-3`}
+        disabled={loading}
       >
-        Login
+        {loading ? 'Logging in...' : 'Login'}
       </button>
     </form>
   );
