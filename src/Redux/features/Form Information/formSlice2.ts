@@ -53,8 +53,13 @@ const formSlice2 = createSlice({
 
       state.secondPageInformation[property] = value;
     },
+
+
+    fillUpSecondFromWithMongodbData : (state, action) =>{
+      state.secondPageInformation = action.payload ;
+    }
   },
 });
 
-export const { fillUpSecondFormData } = formSlice2.actions;
+export const { fillUpSecondFormData, fillUpSecondFromWithMongodbData } = formSlice2.actions;
 export default formSlice2.reducer;

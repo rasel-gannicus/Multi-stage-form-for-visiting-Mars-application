@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import { addUserToRedux } from "@/Redux/features/user/userSlice";
 import { useGetUserInfoQuery } from "@/Redux/features/user/userApi";
 import { fillUpFirstFromWithMongodbData } from "@/Redux/features/Form Information/formSlice";
+import { fillUpSecondFromWithMongodbData } from "@/Redux/features/Form Information/formSlice2";
+import { fillUpThirdFromWithMongodbData } from "@/Redux/features/Form Information/formSlice3";
 
 const CustomWrapper = ({
   children,
@@ -24,7 +26,9 @@ const CustomWrapper = ({
       setEmail(session.user.email);
     }
     if(data?.isSubmitted){
-      dispatch(fillUpFirstFromWithMongodbData(data?.formData?.firstPageInformation))
+      dispatch(fillUpFirstFromWithMongodbData(data?.formData?.firstPageInformation));
+      dispatch(fillUpSecondFromWithMongodbData(data?.formData?.secondPageInformation));
+      dispatch(fillUpThirdFromWithMongodbData(data?.formData?.thirdPageInformation));
     }
   }, [session, email, data]);
 
