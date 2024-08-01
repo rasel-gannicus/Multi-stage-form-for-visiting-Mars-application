@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.Js Multi Stage form validation for Visiting Mars
 
-## Getting Started
+## Installation:
 
-First, run the development server:
+1. Clone the repository.
+2. Install dependencies using `npm install`.
+3. Rename `env.example` to `.env`.
+4. Run the server using `npm run dev`.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Configuration:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Environment Variables:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- `NEXT_PUBLIC_GITHUB_ID`: Github client id.
+- `NEXT_PUBLIC_GITHUB_SECRET`: Github client secret
+- `NEXT_PUBLIC_GOOGLE_ID`: Google client id
+- `NEXT_PUBLIC_GOOGLE_SECRET`: Google client secret
+- `NEXT_PUBLIC_SECRET`: Any secret id/code to enable popup login page for google/github authentication. 
+- `NEXT_PUBLIC_CLIENT_SITE_URL`: Callback url for automatic redirecting after login with google/github
+- `NEXT_PUBLIC_BACKENED_URL`: Backened url to access mongodb data with expressJs. 
 
-## Learn More
+## Dependencies:
 
-To learn more about Next.js, take a look at the following resources:
+- `bcrypt`: Library for hashing passwords.
+- `cors`: Express middleware for enabling CORS.
+- `dotenv`: Loads environment variables from `.env` file.
+- `express`: Web framework for Node.js.
+- `jsonwebtoken`: Library for generating and verifying JWT tokens.
+- `mongodb`: MongoDB driver for Node.js.
+- `nodemon`: Utility for automatically restarting the server during development.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Live Site
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+live site : [here](https://multi-stage-form-for-mars-visit-application.vercel.app/).
 
-## Deploy on Vercel
+### Github Repository
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Client : [here](https://github.com/rasel-gannicus/Multi-stage-form-for-visiting-Mars-application).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Server : [here](https://github.com/rasel-gannicus/Server-for-multi-stage-form-visiting-mars).

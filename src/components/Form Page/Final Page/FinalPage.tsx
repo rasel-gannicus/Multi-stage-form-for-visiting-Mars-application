@@ -69,6 +69,12 @@ const FinalPage = () => {
                 Register
               </button>
             </div>
+            <button
+            onClick={() => dispatch(goToPage(1))}
+            className="bg-green-500 px-5 py-2 text-white rounded-full text-lg min-w-28 "
+          >
+            Check Form Again
+          </button>
           </div>
         )}
         {user.email && (
@@ -76,7 +82,7 @@ const FinalPage = () => {
             onClick={() => dispatch(goToPage(1))}
             className="bg-slate-600 px-5 py-2 text-white rounded-full text-lg min-w-28 "
           >
-            Check form Again
+            Check Form Again
           </button>
         )}
 
