@@ -3,7 +3,6 @@ import { ubuntu } from "../StageOne/StageOne";
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
 import { useEffect, useState } from "react";
-import { signIn } from "next-auth/react";
 import { useDispatch } from "react-redux";
 import { goToPage } from "@/Redux/features/pageRouting/pageRoutingSlice";
 
