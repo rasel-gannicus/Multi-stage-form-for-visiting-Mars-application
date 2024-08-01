@@ -81,89 +81,89 @@ const FinalPage = () => {
             <tr className="w-full">
               <td className="py-2">Name : </td>
               <td className="text-blue-500 py-2">
-                {firstPageInformation.firstName +
+                {firstPageInformation?.firstName +
                   " " +
-                  firstPageInformation.lastName}
+                  firstPageInformation?.lastName}
               </td>
             </tr>
             <tr className="w-full">
               <td className="py-2">Email : </td>
               <td className="text-blue-500 py-2">
-                {firstPageInformation.email}
+                {firstPageInformation?.email}
               </td>
             </tr>
             <tr className="w-full">
               <td className="py-2">Date of birth : </td>
               <td className="text-blue-500 py-2">
-                {firstPageInformation.dateOfBirth.startDate}
+                {firstPageInformation?.dateOfBirth?.startDate}
               </td>
             </tr>
             <tr className="w-full">
               <td className="py-2">Country : </td>
               <td className="text-blue-500 py-2">
-                {firstPageInformation.country.label}
+                {firstPageInformation?.country?.label}
               </td>
             </tr>
             <tr className="w-full my-2">
               <td className="py-2">Phone : </td>
               <td className="text-blue-500 py-2">
-                {firstPageInformation.phone}
+                {firstPageInformation?.phone}
               </td>
             </tr>
             <tr className="w-full my-2">
               <td className="py-2">Departure Date : </td>
               <td className="text-blue-500 py-2">
-                {secondPageInformation.departureDate.startDate}
+                {secondPageInformation?.departureDate?.startDate}
               </td>
             </tr>
             <tr className="w-full my-2">
               <td className="py-2">Return Date : </td>
               <td className="text-blue-500 py-2">
-                {secondPageInformation.returnDate.startDate}
+                {secondPageInformation?.returnDate?.startDate}
               </td>
             </tr>
             <tr className="w-full my-2">
               <td className="py-2">Accomodation Preferences : </td>
               <td className="text-blue-500 py-2">
-                {secondPageInformation.accomodation}
+                {secondPageInformation?.accomodation}
               </td>
             </tr>
             <tr className="w-full my-2">
               <td className="py-2">Special Preferences : </td>
               <td className="text-blue-500 py-2">
-                {!secondPageInformation.specialPreferences.statues
+                {!secondPageInformation?.specialPreferences?.statues
                   ? "No"
-                  : secondPageInformation.specialPreferences.description}
+                  : secondPageInformation?.specialPreferences?.description}
               </td>
             </tr>
             <tr className="w-full my-2">
               <td className="py-2">Health Declaration : </td>
               <td className="text-blue-500 py-2">
-                {thirdPageInformation.healthDeclaration}
+                {thirdPageInformation?.healthDeclaration}
               </td>
             </tr>
             <tr className="w-full my-2">
               <td className="py-2">Emergency Contact Name : </td>
               <td className="text-blue-500 py-2">
-                {thirdPageInformation.emergencyContact.name}
+                {thirdPageInformation?.emergencyContact?.name}
               </td>
             </tr>
             <tr className="w-full my-2">
               <td className="py-2">Emergency Contact Number : </td>
               <td className="text-blue-500 py-2">
-                {thirdPageInformation.emergencyContact.phone}
+                {thirdPageInformation?.emergencyContact?.phone}
               </td>
             </tr>
             <tr className="w-full my-2">
               <td className="py-2">Emergency Contact Email : </td>
               <td className="text-blue-500 py-2">
-                {thirdPageInformation.emergencyContact.email}
+                {thirdPageInformation?.emergencyContact?.email}
               </td>
             </tr>
             <tr className="w-full my-2">
               <td className="py-2">Any Medical Conditions : </td>
               <td className="text-blue-500 py-2">
-                {thirdPageInformation.medicalConditions}
+                {thirdPageInformation?.medicalConditions}
               </td>
             </tr>
           </tbody>

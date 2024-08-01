@@ -10,10 +10,18 @@ import { HiOutlineMail } from "react-icons/hi";
 import { MdDriveFileRenameOutline } from "react-icons/md";
 import { ubuntu } from "../StageOne/StageOne";
 import { addUserToRedux } from "@/Redux/features/user/userSlice";
+import { useAddUserDataMutation } from "@/Redux/features/user/userApi";
+import { toast } from "react-hot-toast";
+import loadingImg from "@/assets/img/loading.gif";
+import Image from "next/image";
 
 const StageThree = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.userSlice.user);
+
+  // --- adding data to user with rtk query
+  const [addData, { data, isLoading, isError, error }] =
+    useAddUserDataMutation();
 
   // --- getting form data
   const formData1 = useAppSelector(
@@ -38,18 +46,41 @@ const StageThree = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!user.email) {
-      dispatch(addUserToRedux({ user: { name: "", email: "", formData: {
-        firstPageInformation : formData1,
-        secondPageInformation : formData2,
-        thirdPageInformation : formdata3
-      } } }));
-    }else if(user.email){
-      
+      dispatch(
+        addUserToRedux({
+          user: {
+            name: "",
+            email: "",
+            formData: {
+              firstPageInformation: formData1,
+              secondPageInformation: formData2,
+              thirdPageInformation: formdata3,
+            },
+          },
+        })
+      );
+    } else if (user.email) {
+      addData({
+        ...user,
+        isSubmitted: true,
+        formData: {
+          firstPageInformation: formData1,
+          secondPageInformation: formData2,
+          thirdPageInformation: formdata3,
+        },
+      });
     }
-    console.log(user);
-    // console.log(formdata3);
-    dispatch(goToPage(4));
+
+    // dispatch(goToPage(4));
   };
+  if (!isLoading && isError) {
+    console.log(error);
+    toast.error("There was an error");
+  }
+  if (!isLoading && !isError && data?.result?.acknowledged) {
+    console.log(data);
+    toast(data.message);
+  }
 
   // --- for 'Select Phone Number'
   const [phoneNumber, setPhoneNumber] = useState(
@@ -196,10 +227,22 @@ const StageThree = () => {
             </div>
 
             <button
+              disabled={isLoading}
               type="submit"
-              className={`${ubuntu.className} inline-block rounded bg-slate-600 hover:bg-slate-500 w-24 h-12  font-medium text-white absolute bottom-0 right-0 xl:right-[5%]`}
+              className={`${ubuntu.className} ${
+                isLoading
+                  ? "bg-slate-500 text-white"
+                  : "bg-slate-700 text-white"
+              } flex justify-center items-center gap-3  px-3 md:px-5 rounded  text-lg py-3 text-white absolute bottom-0 right-0 xl:right-[5%]`}
             >
-              Next
+              {isLoading ? "Loading..." : "Submit"}
+              {isLoading && (
+                <Image
+                  alt="loading image"
+                  src={loadingImg}
+                  className="w-[60px]"
+                />
+              )}
             </button>
           </form>
         </div>
