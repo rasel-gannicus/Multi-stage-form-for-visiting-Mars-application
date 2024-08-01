@@ -71,6 +71,14 @@ const FinalPage = () => {
             </div>
           </div>
         )}
+        {user.email && (
+          <button
+            onClick={() => dispatch(goToPage(1))}
+            className="bg-slate-600 px-5 py-2 text-white rounded-full text-lg min-w-28 "
+          >
+            Check form Again
+          </button>
+        )}
 
         <h2 className="text-center text-xl ">Here is your submitted info : </h2>
       </div>

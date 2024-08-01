@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "@/Redux/store/reduxHooks";
 import { goToPage } from "@/Redux/features/pageRouting/pageRoutingSlice";
 import { fillUpFirstFormData } from "@/Redux/features/Form Information/formSlice";
 import Datepicker from "react-tailwindcss-datepicker";
+import { toast } from "react-hot-toast";
 
 // --- font for button
 export const ubuntu = Ubuntu({
@@ -25,7 +26,6 @@ const StageOne = () => {
   const formdata = useAppSelector(
     (state) => state.formData.firstPageInformation
   );
-  
 
   //   --- changing form page with redux
   const dispatch = useAppDispatch();
@@ -33,6 +33,10 @@ const StageOne = () => {
   //   --- function for submitting form
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
+    if(!formdata.dateOfBirth.startDate){
+      toast.error("Date of birth field required") ;
+      return ;
+    }
     dispatch(goToPage(2));
   };
 
@@ -88,7 +92,7 @@ const StageOne = () => {
       })
     );
   }, [selectedCountry]);
-  
+
   return (
     <div className="flex flex-col justify-between overflow-y-scroll  h-[80%]  items-end w-full">
       <div className="py-2 w-full">
@@ -117,6 +121,7 @@ const StageOne = () => {
 
                 <div className="relative">
                   <input
+                    required
                     onChange={(e) =>
                       dispatch(
                         fillUpFirstFormData({
@@ -146,6 +151,7 @@ const StageOne = () => {
 
                 <div className="relative">
                   <input
+                    required
                     onChange={(e) =>
                       dispatch(
                         fillUpFirstFormData({
@@ -173,6 +179,7 @@ const StageOne = () => {
             <div>
               <div className="relative">
                 <input
+                  required
                   onChange={(e) =>
                     dispatch(
                       fillUpFirstFormData({
@@ -182,7 +189,6 @@ const StageOne = () => {
                     )
                   }
                   value={formdata.email}
-                  // required
                   type="email"
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm border-2"
                   placeholder="Your email"
@@ -225,7 +231,7 @@ const StageOne = () => {
                 Your Country
               </label>
               <Select
-                // required
+                required
                 options={countries}
                 value={selectedCountry}
                 onChange={(selectedOption) =>
@@ -242,7 +248,7 @@ const StageOne = () => {
               </label>
 
               <PhoneInput
-                // required
+                required
                 placeholder="Enter phone number"
                 value={phoneNumber}
                 onChange={(phoneNumber: any) => setPhoneNumber(phoneNumber)}

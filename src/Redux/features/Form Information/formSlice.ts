@@ -2,15 +2,15 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface TInitialState {
   firstPageInformation: {
-    firstName?: string;
-    lastName?: string;
-    email?: string;
-    dateOfBirth?: {
-      startDate?: Date | null | string;
-      endDate?: Date | null | string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    dateOfBirth: {
+      startDate: Date | null | string;
+      endDate: Date | null | string;
     };
-    country?: string;
-    phone?: string;
+    country: string;
+    phone: string;
   };
 }
 // Define the type of the property names in the firstPageInformation object

@@ -59,6 +59,7 @@ const StageThree = () => {
           },
         })
       );
+      dispatch(goToPage(4));
     } else if (user.email) {
       addData({
         ...user,
@@ -70,16 +71,14 @@ const StageThree = () => {
         },
       });
     }
-
-    // dispatch(goToPage(4));
   };
   if (!isLoading && isError) {
     console.log(error);
     toast.error("There was an error");
   }
   if (!isLoading && !isError && data?.result?.acknowledged) {
-    console.log(data);
     toast(data.message);
+    dispatch(goToPage(4));
   }
 
   // --- for 'Select Phone Number'
@@ -107,6 +106,7 @@ const StageThree = () => {
               <div className="flex gap-4 mt-3">
                 <label className="flex justify-start items-center gap-3 cursor-pointer">
                   <input
+                    required
                     type="radio"
                     name="healthDeclaration"
                     value="yes"
@@ -120,6 +120,7 @@ const StageThree = () => {
                 </label>
                 <label className="flex justify-start items-center gap-3 cursor-pointer ms-5">
                   <input
+                    required
                     type="radio"
                     name="healthDeclaration"
                     value="no"
@@ -146,6 +147,7 @@ const StageThree = () => {
                 </label>
                 <div className="relative">
                   <input
+                    required
                     onChange={(e: any) =>
                       handleInputChange("emergencyContact", {
                         ...emergencyContact,
@@ -172,7 +174,7 @@ const StageThree = () => {
                 </label>
 
                 <PhoneInput
-                  // required
+                  required
                   placeholder="Emergency phone number"
                   value={phoneNumber}
                   onChange={(e: any) =>
@@ -190,6 +192,7 @@ const StageThree = () => {
                 <label htmlFor="emergencyEmail">Email :</label>
                 <div className="relative pt-3">
                   <input
+                    required
                     onChange={(e: any) =>
                       handleInputChange("emergencyContact", {
                         ...emergencyContact,
@@ -216,6 +219,7 @@ const StageThree = () => {
                 Any Medical Conditions (if applicable):
               </label>
               <textarea
+                required
                 id="medicalConditions"
                 rows={5}
                 className="w-full rounded-md border-2 py-3 px-3"

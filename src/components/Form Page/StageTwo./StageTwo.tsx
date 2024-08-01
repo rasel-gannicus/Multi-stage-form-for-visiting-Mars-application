@@ -10,6 +10,7 @@ import {
   TInitialStateForm2,
   fillUpSecondFormData,
 } from "@/Redux/features/Form Information/formSlice2";
+import { toast } from "react-hot-toast";
 
 const StageTwo = () => {
   //   --- changing form page with redux
@@ -36,6 +37,14 @@ const StageTwo = () => {
   //   --- function for submitting form
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
+    if (!formdata2.departureDate.endDate) {
+      toast.error("Deparure Date Required ");
+      return;
+    }
+    if (!formdata2.returnDate.endDate) {
+      toast.error("Return Date Required ");
+      return;
+    }
     dispatch(goToPage(3));
   };
   return (
@@ -99,6 +108,7 @@ const StageTwo = () => {
                 <label className="flex flex-col py-1 gap-3 hover:text-black justify-start items-center text-gray-500">
                   <span className="flex w-full justify-start items-center gap-4">
                     <input
+                      required
                       type="radio"
                       name="hotel"
                       id=""
@@ -124,6 +134,7 @@ const StageTwo = () => {
                 <label className="flex flex-col py-1 gap-3 hover:text-black justify-start items-center  text-gray-500">
                   <span className="flex w-full justify-start items-center gap-3">
                     <input
+                      required
                       type="radio"
                       name="hotel"
                       id=""
@@ -153,6 +164,7 @@ const StageTwo = () => {
                 <label className="flex flex-col py-1 gap-3 hover:text-black justify-start items-center text-gray-500">
                   <span className="flex w-full justify-start items-center gap-4">
                     <input
+                      required
                       type="radio"
                       name="special-preferences"
                       id=""
@@ -172,6 +184,7 @@ const StageTwo = () => {
                 <label className="flex flex-col py-1 gap-3 hover:text-black justify-start items-center  text-gray-500">
                   <span className="flex w-full justify-start items-center gap-3">
                     <input
+                      required
                       type="radio"
                       name="special-preferences"
                       id=""
