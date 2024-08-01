@@ -1,5 +1,5 @@
 import { goToPage } from "@/Redux/features/pageRouting/pageRoutingSlice";
-import { addUserToRedux } from "@/Redux/features/user/userSlice";
+import { addNewSession, addUserToRedux } from "@/Redux/features/user/userSlice";
 import { loginUser } from "@/utils/actions/loginUser";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
@@ -30,7 +30,8 @@ const RegularLogin = () => {
       if (res.success) {
         setLoading(false);
         toast.success(res.message);
-        console.log(res.user);
+        
+        dispatch(addNewSession(res.user))
         dispatch(addUserToRedux({user : res.user})) ;
         dispatch(goToPage(1));
       }

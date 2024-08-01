@@ -77,7 +77,7 @@ const StageThree = () => {
     toast.error("There was an error");
   }
   if (!isLoading && !isError && data?.result?.acknowledged) {
-    toast(data.message);
+    toast.success('Form Submitted Successfully !');
     dispatch(goToPage(4));
   }
 

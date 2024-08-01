@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addUserToRedux } from "@/Redux/features/user/userSlice";
+import { addNewSession, addUserToRedux } from "@/Redux/features/user/userSlice";
 import { useGetUserInfoQuery } from "@/Redux/features/user/userApi";
 import { fillUpFirstFromWithMongodbData } from "@/Redux/features/Form Information/formSlice";
 import { fillUpSecondFromWithMongodbData } from "@/Redux/features/Form Information/formSlice2";
 import { fillUpThirdFromWithMongodbData } from "@/Redux/features/Form Information/formSlice3";
+import { useAppSelector } from "@/Redux/store/reduxHooks";
 
 const CustomWrapper = ({
   children,
@@ -15,22 +16,28 @@ const CustomWrapper = ({
   children: React.ReactNode;
   session: any;
 }) => {
-  const [email, setEmail] = useState(null);
-  const dispatch = useDispatch();
-  const { data } = useGetUserInfoQuery(session?.user?.email);
+  const userSession = useAppSelector(state => state.userSlice.userSession) ;
 
-  useEffect(() => {
-    // console.log(data);
+  const dispatch = useDispatch();
+  const { data } = useGetUserInfoQuery(userSession.email);
+
+  useEffect(() => {    
     if (session?.user.email) {
+      dispatch(addNewSession(session.user));
       dispatch(addUserToRedux(session));
-      setEmail(session.user.email);
     }
-    if(data?.isSubmitted){
-      dispatch(fillUpFirstFromWithMongodbData(data?.formData?.firstPageInformation));
-      dispatch(fillUpSecondFromWithMongodbData(data?.formData?.secondPageInformation));
-      dispatch(fillUpThirdFromWithMongodbData(data?.formData?.thirdPageInformation));
+    if (data?.isSubmitted) {
+      dispatch(
+        fillUpFirstFromWithMongodbData(data?.formData?.firstPageInformation)
+      );
+      dispatch(
+        fillUpSecondFromWithMongodbData(data?.formData?.secondPageInformation)
+      );
+      dispatch(
+        fillUpThirdFromWithMongodbData(data?.formData?.thirdPageInformation)
+      );
     }
-  }, [session, email, data]);
+  }, [session, data, userSession]);
 
   return <>{children}</>;
 };
