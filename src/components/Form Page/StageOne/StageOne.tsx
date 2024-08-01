@@ -25,7 +25,7 @@ const StageOne = () => {
   const formdata = useAppSelector(
     (state) => state.formData.firstPageInformation
   );
-
+  
 
   //   --- changing form page with redux
   const dispatch = useAppDispatch();

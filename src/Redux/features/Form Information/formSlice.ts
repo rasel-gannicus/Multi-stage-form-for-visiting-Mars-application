@@ -2,15 +2,15 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface TInitialState {
   firstPageInformation: {
-    firstName: string;
-    lastName: string;
-    email: string;
-    dateOfBirth: {
-      startDate: Date | null | string;
-      endDate: Date | null | string;
+    firstName?: string;
+    lastName?: string;
+    email?: string;
+    dateOfBirth?: {
+      startDate?: Date | null | string;
+      endDate?: Date | null | string;
     };
-    country: string;
-    phone: string;
+    country?: string;
+    phone?: string;
   };
 }
 // Define the type of the property names in the firstPageInformation object
@@ -42,8 +42,11 @@ const formSlice = createSlice({
 
       state.firstPageInformation[property] = value;
     },
+    fillUpFirstFromWithMongodbData : (state, action) =>{
+      state.firstPageInformation = action.payload ;
+    }
   },
 });
 
-export const { fillUpFirstFormData } = formSlice.actions;
+export const { fillUpFirstFormData,fillUpFirstFromWithMongodbData } = formSlice.actions;
 export default formSlice.reducer;

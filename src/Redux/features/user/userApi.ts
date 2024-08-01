@@ -7,15 +7,22 @@ export const userApi = createApi({
     }),
     tagTypes : ['Users'],
     endpoints : (builder) => ({
+
         addUserData : builder.mutation({
             query : (data) => ({
                 url : '/addUserData',
                 method : 'PATCH',
                 body : data
             }),
+        }),
+
+        getUserInfo : builder.query({
+            query : (email) => ({
+                url : `/userInfo/${email}`
+            })
         })
         
     })
 })
 
-export const {useAddUserDataMutation} = userApi ; 
+export const {useAddUserDataMutation, useGetUserInfoQuery} = userApi ; 
