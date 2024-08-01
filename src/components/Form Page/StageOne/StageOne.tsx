@@ -33,25 +33,17 @@ const StageOne = () => {
   //   --- function for submitting form
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if(!formdata.dateOfBirth.startDate){
-      toast.error("Date of birth field required") ;
-      return ;
+    if (!formdata.dateOfBirth.startDate) {
+      toast.error("Date of birth field required");
+      return;
     }
     dispatch(goToPage(2));
   };
 
   // --- for 'Select Phone Number'
   const [phoneNumber, setPhoneNumber] = useState(formdata.phone);
+  console.log(formdata.phone);
 
-  useEffect(() => {
-    // ---  updating Redux state for phone number and
-    dispatch(
-      fillUpFirstFormData({
-        property: "phone",
-        value: phoneNumber,
-      })
-    );
-  }, [phoneNumber]);
 
   // --- for 'Select Country' menubar
   const [countries, setCountries] = useState([]);
@@ -250,8 +242,15 @@ const StageOne = () => {
               <PhoneInput
                 required
                 placeholder="Enter phone number"
-                value={phoneNumber}
-                onChange={(phoneNumber: any) => setPhoneNumber(phoneNumber)}
+                value={formdata?.phone || ''}
+                onChange={(e: any) =>
+                  dispatch(
+                    fillUpFirstFormData({
+                      property: "phone",
+                      value: e,
+                    })
+                  )
+                }
                 className="border-gray-200 mt-2 border-2 rounded py-3 px-4"
               />
             </div>
