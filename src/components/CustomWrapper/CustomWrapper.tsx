@@ -16,9 +16,7 @@ const CustomWrapper = ({
   useEffect(() => {
     if (session?.user) {
       dispatch(addUserToRedux(session));
-    } else {
-      dispatch(addUserToRedux({ user: null }));
-    }
+    } 
   }, [session]);
 
   return <>{children}</>;

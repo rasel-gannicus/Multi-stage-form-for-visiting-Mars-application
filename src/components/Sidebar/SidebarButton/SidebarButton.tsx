@@ -14,7 +14,7 @@ const SidebarButton = (props: any) => {
     <>
       {pageStatus != "login" && pageStatus != "register" && (
         <div className="">
-          {userStatus ? (
+          {userStatus?.email ? (
             <button
               className={` ${ubuntu.className} bg-white z-50 py-2 px-2 text-black absolute bottom-1 right-1 rounded flex justify-center items-center font-normal text-sm gap-2 opacity-30 hover:opacity-90 transition-all duration-300`}
               onClick={() => signOut()}

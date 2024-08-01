@@ -1,6 +1,6 @@
 import { goToPage } from "@/Redux/features/pageRouting/pageRoutingSlice";
 import { useAppDispatch, useAppSelector } from "@/Redux/store/reduxHooks";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   TInitialStateForm3,
   fillUpThirdFormData,
@@ -9,9 +9,19 @@ import PhoneInput from "react-phone-number-input";
 import { HiOutlineMail } from "react-icons/hi";
 import { MdDriveFileRenameOutline } from "react-icons/md";
 import { ubuntu } from "../StageOne/StageOne";
+import { addUserToRedux } from "@/Redux/features/user/userSlice";
 
 const StageThree = () => {
   const dispatch = useAppDispatch();
+  const user = useAppSelector((state) => state.userSlice.user);
+
+  // --- getting form data
+  const formData1 = useAppSelector(
+    (state) => state.formData.firstPageInformation
+  );
+  const formData2 = useAppSelector(
+    (state) => state.formData2.secondPageInformation
+  );
   const formdata3 = useAppSelector(
     (state) => state.formData3.thirdPageInformation
   );
@@ -27,6 +37,17 @@ const StageThree = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!user.email) {
+      dispatch(addUserToRedux({ user: { name: "", email: "", formData: {
+        firstPageInformation : formData1,
+        secondPageInformation : formData2,
+        thirdPageInformation : formdata3
+      } } }));
+    }else if(user.email){
+      
+    }
+    console.log(user);
+    // console.log(formdata3);
     dispatch(goToPage(4));
   };
 
@@ -175,11 +196,11 @@ const StageThree = () => {
             </div>
 
             <button
-                type="submit"
-                className={`${ubuntu.className} inline-block rounded bg-slate-600 hover:bg-slate-500 w-24 h-12  font-medium text-white absolute bottom-0 right-0 xl:right-[5%]`}
-              >
-                Next
-              </button>
+              type="submit"
+              className={`${ubuntu.className} inline-block rounded bg-slate-600 hover:bg-slate-500 w-24 h-12  font-medium text-white absolute bottom-0 right-0 xl:right-[5%]`}
+            >
+              Next
+            </button>
           </form>
         </div>
       </div>

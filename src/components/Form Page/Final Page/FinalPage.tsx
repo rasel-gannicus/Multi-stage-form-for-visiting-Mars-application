@@ -49,11 +49,11 @@ const FinalPage = () => {
         </h2>
 
         {/* --- showing login button based on logged in user --- */}
-        {!user && (
+        {!user.email && (
           <div className="flex flex-col justify-center items-center gap-3 border-dotted border-2 border-slate-300 px-4 py-6 rounded">
             <h2 className="text-center text-xl ">
-              In the meantime we suggest you to login to save your information
-              for future use
+              In the meantime, we suggest you to login to save your information.
+              Otherwise your form information might get lost.
             </h2>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-3">
               <button
