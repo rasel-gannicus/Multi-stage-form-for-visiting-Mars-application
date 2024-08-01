@@ -23,7 +23,7 @@ const SidebarButton = (props: any) => {
               {userStatus.image ? (
                 <Image
                   alt="user image"
-                  src={userStatus.image}
+                  src={userStatus?.image}
                   width={30}
                   height={30}
                   className="rounded-full"

@@ -6,6 +6,8 @@ import { toast } from "react-hot-toast";
 import { HiOutlineMail } from "react-icons/hi";
 import { IoKeyOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
+import loadingImg from "@/assets/img/loading.gif" ; 
+import Image from "next/image";
 
 const RegularLogin = () => {
   const dispatch = useDispatch();
@@ -81,10 +83,11 @@ const RegularLogin = () => {
 
       <button
         type="submit"
-        className={`${loading ? 'bg-slate-500 text-yellow-400':'bg-slate-700 text-white'} w-full rounded-full  text-lg py-3`}
+        className={`${loading ? 'bg-slate-500 text-white':'bg-slate-700 text-white'} flex justify-center items-center gap-3 w-full rounded-full  text-lg py-3`}
         disabled={loading}
       >
         {loading ? 'Logging in...' : 'Login'}
+        {loading && <Image alt="loading image" src={loadingImg} className="w-[60px]" />}
       </button>
     </form>
   );

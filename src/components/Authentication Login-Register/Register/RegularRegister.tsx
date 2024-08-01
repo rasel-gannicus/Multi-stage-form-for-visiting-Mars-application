@@ -7,6 +7,8 @@ import { FaRegUser } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { IoKeyOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
+import loadingImg from "@/assets/img/loading.gif" ; 
+import Image from "next/image";
 
 const RegularRegister = () => {
   const dispatch = useDispatch();
@@ -129,10 +131,11 @@ const RegularRegister = () => {
         type="submit"
         className={`${
           loading ? "bg-slate-500" : "bg-slate-700"
-        } w-full rounded-full text-white text-lg py-3`}
+        } flex justify-center items-center gap-3 w-full rounded-full text-white text-lg py-3`}
         disabled={loading}
       >
         {loading ? "Loading..." : "Register"}
+        {loading && <Image alt="loading image" src={loadingImg} className="w-[60px]" />}
       </button>
     </form>
   );

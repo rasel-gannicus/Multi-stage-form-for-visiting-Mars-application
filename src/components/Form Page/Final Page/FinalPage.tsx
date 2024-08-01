@@ -1,18 +1,22 @@
 import { useAppSelector } from "@/Redux/store/reduxHooks";
 import { ubuntu } from "../StageOne/StageOne";
-import marsMan from "@/assets/img/mars_man-removebg-preview.png";
-import Image from "next/image";
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
 import { useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
+import { useDispatch } from "react-redux";
+import { goToPage } from "@/Redux/features/pageRouting/pageRoutingSlice";
 
 const FinalPage = () => {
+  const dispatch = useDispatch();
   const fullInfo = useAppSelector((state) => state);
   const firstPageInformation: any = fullInfo.formData.firstPageInformation;
   const secondPageInformation: any = fullInfo.formData2.secondPageInformation;
   const thirdPageInformation: any = fullInfo.formData3.thirdPageInformation;
 
+  const user = useAppSelector((state) => state.userSlice.user);
+
+  // --- showing confetti
   const { width, height } = useWindowSize();
   const [showConfetti, setShowConfetti] = useState(false);
 
@@ -37,15 +41,37 @@ const FinalPage = () => {
             run={showConfetti}
           />
         )}
-        <button onClick={()=>signIn('github', {
-            callbackUrl : "http://localhost:3000/"
-        })}>Sign in with github</button>
         <h2 className="text-center text-xl">
           You have successfully submitted for the Mars Visiting form.
         </h2>
         <h2 className="text-center text-xl ">
           You will be onboard withing very short time !
         </h2>
+
+        {/* --- showing login button based on logged in user --- */}
+        {!user && (
+          <div className="flex flex-col justify-center items-center gap-3 border-dotted border-2 border-slate-300 px-4 py-6 rounded">
+            <h2 className="text-center text-xl ">
+              In the meantime we suggest you to login to save your information
+              for future use
+            </h2>
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-3">
+              <button
+                onClick={() => dispatch(goToPage("login"))}
+                className="bg-slate-600 px-5 py-2 text-white rounded-full text-lg min-w-28 "
+              >
+                Login
+              </button>
+              <button
+                onClick={() => dispatch(goToPage("register"))}
+                className="bg-yellow-400 px-5 py-2 text-black rounded-full text-lg min-w-28 "
+              >
+                Register
+              </button>
+            </div>
+          </div>
+        )}
+
         <h2 className="text-center text-xl ">Here is your submitted info : </h2>
       </div>
 
