@@ -1,33 +1,34 @@
-# Next.Js Multi Stage form validation for Visiting Mars
+# Next.js Multi Stage Form Validation for Visiting Mars
+
+A multi-step form for visiting Mars. Users have to go through three stages of submitting the form. Users can navigate back and forth to edit their submission. There is an authentication system so that users can register and log in to save their information in a MongoDB database.
 
 ## Technologies Used
 
-- **Frontend:** NextJs, Typescript, Redux, Tailwind Css, HTML, CSS, React tailwindcss datepicker, React icons, React Hot toast  
+- **Frontend:** Next.js, TypeScript, Redux, Tailwind CSS, HTML, CSS, React TailwindCSS Datepicker, React Icons, React Hot Toast  
 - **Backend:** Node.js, Express, MongoDB, Firebase
 - **Authentication:** NextAuth, JWT Token 
 - **State Management:** RTK Query, Redux
 
-## Installation:
+## Installation
 
 1. Clone the repository.
 2. Install dependencies using `npm install`.
 3. Rename `env.example` to `.env`.
 4. Run the server using `npm run dev`.
 
-## Configuration:
+## Configuration
 
-### Environment Variables:
+### Environment Variables
 
+- `NEXT_PUBLIC_GITHUB_ID`: GitHub client ID.
+- `NEXT_PUBLIC_GITHUB_SECRET`: GitHub client secret.
+- `NEXT_PUBLIC_GOOGLE_ID`: Google client ID.
+- `NEXT_PUBLIC_GOOGLE_SECRET`: Google client secret.
+- `NEXT_PUBLIC_SECRET`: Any secret key for enabling popup login page for Google/GitHub authentication.
+- `NEXT_PUBLIC_CLIENT_SITE_URL`: Callback URL for automatic redirecting after login with Google/GitHub.
+- `NEXT_PUBLIC_BACKEND_URL`: Backend URL to access MongoDB data with Express.js.
 
-- `NEXT_PUBLIC_GITHUB_ID`: Github client id.
-- `NEXT_PUBLIC_GITHUB_SECRET`: Github client secret
-- `NEXT_PUBLIC_GOOGLE_ID`: Google client id
-- `NEXT_PUBLIC_GOOGLE_SECRET`: Google client secret
-- `NEXT_PUBLIC_SECRET`: Any secret id/code to enable popup login page for google/github authentication. 
-- `NEXT_PUBLIC_CLIENT_SITE_URL`: Callback url for automatic redirecting after login with google/github
-- `NEXT_PUBLIC_BACKENED_URL`: Backened url to access mongodb data with expressJs. 
-
-## Dependencies:
+## Dependencies
 
 - `bcrypt`: Library for hashing passwords.
 - `cors`: Express middleware for enabling CORS.
@@ -39,10 +40,9 @@
 
 ### Live Site
 
-live site : [here](https://multi-stage-form-for-mars-visit-application.vercel.app/).
+Live site: [here](https://multi-stage-form-for-mars-visit-application.vercel.app/).
 
-### Github Repository
+### GitHub Repository
 
-Client : [here](https://github.com/rasel-gannicus/Multi-stage-form-for-visiting-Mars-application).
-
-Server : [here](https://github.com/rasel-gannicus/Server-for-multi-stage-form-visiting-mars).
+- Client: [here](https://github.com/rasel-gannicus/Multi-stage-form-for-visiting-Mars-application).
+- Server: [here](https://github.com/rasel-gannicus/Server-for-multi-stage-form-visiting-mars).
