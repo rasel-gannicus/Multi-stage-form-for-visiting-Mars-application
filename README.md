@@ -46,3 +46,27 @@ Live site: [here](https://multi-stage-form-for-mars-visit-application.vercel.app
 
 - Client: [here](https://github.com/rasel-gannicus/Multi-stage-form-for-visiting-Mars-application).
 - Server: [here](https://github.com/rasel-gannicus/Server-for-multi-stage-form-visiting-mars).
+
+### Project Previews
+
+Here are some previews of the project:
+
+*First Page*
+![Step 1](https://i.ibb.co/sC03wTL/Xnapper-2024-08-02-13-08-55.png)
+
+
+*2nd Page*
+![Step 1](https://i.ibb.co/w63ZxPq/Xnapper-2024-08-02-13-11-07.png)
+
+*3rd Page*
+![Step 1](https://i.ibb.co/K7K6gCz/Xnapper-2024-08-02-13-12-34.png)
+
+*Confirmation Page*
+![Step 1](https://i.ibb.co/9Hsh6N9/Xnapper-2024-08-02-13-13-08.png)
+
+
+*Login Page*
+![Step 1](https://i.ibb.co/zNJTkRg/Xnapper-2024-08-02-13-13-31.png)
+
+*Registration Page*
+![Step 1](https://i.ibb.co/hcR88Z6/Xnapper-2024-08-02-13-13-52.png)
