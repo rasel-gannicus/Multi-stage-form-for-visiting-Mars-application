@@ -1,5 +1,12 @@
 # Next.Js Multi Stage form validation for Visiting Mars
 
+## Technologies Used
+
+- **Frontend:** NextJs, Typescript, Redux, Tailwind Css, HTML, CSS, React tailwindcss datepicker, React icons, React Hot toast  
+- **Backend:** Node.js, Express, MongoDB, Firebase
+- **Authentication:** NextAuth, JWT Token 
+- **State Management:** RTK Query, Redux
+
 ## Installation:
 
 1. Clone the repository.
